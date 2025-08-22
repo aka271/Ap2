@@ -16,9 +16,8 @@
         justify-content: center;
         margin-bottom: 10px;
     }
-    .example-container-combined h2 {
+    .example-container-combined span {
         color: #0056b3;
-        border-bottom: 2px solid #f0f0f0;
         padding-bottom: 5px;
     }
 
@@ -87,6 +86,9 @@
     - [4.1 Element-Selektor](#41-element-selektor)
     - [4.2 Klassen-Selektor](#42-klassen-selektor)
     - [4.3 ID-Selektor](#43-id-selektor)
+    - [4.4 Attribut-Selektor](#44-attribut-selektor)
+    - [4.5 Allgemeiner Selektor](#45-allgemeiner-selektor)
+    - [4.6 Gruppierung](#46-gruppierung)
   - [5. Das Boxmodell](#5-das-boxmodell)
   - [6. Positionierung](#6-positionierung)
     - [6.1 static (Standardwert)](#61-static-standardwert)
@@ -94,6 +96,10 @@
     - [6.3 absolute](#63-absolute)
     - [6.4 fixed](#64-fixed)
     - [6.5 sticky](#65-sticky)
+  - [7. Flexbox](#7-flexbox)
+    - [7.1 Flex-Container](#71-flex-container)
+    - [7.2 Eigenschaften für den Flex-Container](#72-eigenschaften-für-den-flex-container)
+    - [7.3 Eigenschaften für Flex-Elemente](#73-eigenschaften-für-flex-elemente)
 
 ## 1. Was ist CSS?
 
@@ -227,6 +233,32 @@ Wählt ein Element basierend auf dem Wert seines `id`-Attributs aus. Da IDs auf 
 #kopfzeile {
   background-color: lightblue;
   padding: 20px;
+}
+```
+
+### 4.4 Attribut-Selektor
+Dieser Selektor wählt alle HTML-Elemente aus, die ein bestimmtes Attribut besitzen. Im folgenden Beispiel werden alle `<a>`-Tags (Links) ausgewählt, die ein `href`-Attribut haben. Diesen wird dann ein gelber Hintergrund zugewiesen.
+```css
+a[href] {
+ background-color: yellow;
+}
+```
+
+### 4.5 Allgemeiner Selektor
+Der Universal-Selektor, dargestellt durch ein Sternchen `(*)`, wählt jedes einzelne Element auf der Webseite aus. Er wird oft verwendet, um grundlegende Stile für die gesamte Seite festzulegen.
+```css
+* {
+text-align: center;
+color: blue;
+}
+```
+
+### 4.6 Gruppierung
+Um Code-Wiederholungen zu vermeiden, kann man dieselben CSS-Regeln auf mehrere Selektoren gleichzeitig anwenden. Dazu listet man die Selektoren einfach mit einem Komma getrennt auf.
+```css
+h1, h2, p {
+ text-align: center;
+color: red;
 }
 ```
 
@@ -396,7 +428,6 @@ Wählt ein Element basierend auf dem Wert seines `id`-Attributs aus. Da IDs auf 
 </style>
 <div class="container">
     <h1 class="title">Das CSS Boxmodell</h1>
-    <!-- Visuelle Darstellung des Boxmodells -->
     <div class="margin-box">
          <span class="box-label label-margin">Margin (Außenabstand)</span>
         <div class="border-box">
@@ -484,7 +515,7 @@ Jedes HTML-Element ist standardmäßig `static` positioniert. Das bedeutet, es f
 ```
 
 <div class="example-container-combined">
-  <h2>Static-Example</h2>
+  <span>Static-Example</span>
       <div class="box static-box">Static Box</div>
       <p>This box is in the normal document flow.</p>
 </div>
@@ -501,7 +532,7 @@ Ein relativ positioniertes Element wird relativ zu seiner *normalen* Position im
 }
 ```
 <div class="example-container-combined">
-    <h2>Relative-Example</h2>
+    <span>Relative-Example</span>
     <div class="box relative-box-1">Box 1</div>
     <div class="box relative-box-2">Box 2 (Relative)</div>
     <div class="box relative-box-3">Box 3</div>
@@ -528,7 +559,7 @@ Ein absolut positioniertes Element wird vollständig aus dem normalen Dokumenten
 ```
 
 <div class="example-container-combined">
-    <h2>Absolute-Example</h2>
+    <span>Absolute-Example</span>
     <div class="absolute-container">
         Container (position: relative)
         <div class="box absolute-box">Absolute Box</div>
@@ -548,7 +579,7 @@ Ein Element mit `position: fixed` wird relativ zum Ansichtsfenster (dem Browserf
 ```
 
 <div class="example-container-combined">
-    <h2>Fixed-Example</h2>
+    <span>Fixed-Example</span>
     <div class="box fixed-box">Fixed Box</div>
     <p>This box stays in place when you scroll the page.</p>
 
@@ -563,7 +594,7 @@ Ein "klebrig" positioniertes Element ist eine Mischung aus `relative` und `fixed
 ```
 
 <div class="example-container-combined">
-    <h2>Sticky-Example</h2>
+    <span>Sticky-Example</span>
     <div class="sticky-container">
         <div class="sticky-header">Sticky Header</div>
         <p>Scroll <b>inside this container</b> to see the effect.</p>
@@ -572,3 +603,116 @@ Ein "klebrig" positioniertes Element ist eine Mischung aus `relative` und `fixed
         <p>Even more content to ensure scrolling is possible...</p>
     </div>
 </div>
+
+## 7. Flexbox
+Mit Flexbox (Flexible Box Layout) lässt sich ein flexibles und responsives Layout einfach erstellen. Es ist ein eindimensionales Layout-Modell, das dabei hilft, Elemente innerhalb eines Containers anzuordnen und auszurichten.
+
+### 7.1 Flex-Container
+Um Flexbox zu nutzen, benötigt man einen Flex-Container. Jedes HTML-Element kann durch die CSS-Eigenschaft display: flex; zu einem solchen Container werden.
+
+```css
+.container {
+  display: flex;
+}
+```
+
+Die direkten Kindelemente dieses Containers werden automatisch zu Flex-Elementen.
+
+### 7.2 Eigenschaften für den Flex-Container
+Diese Eigenschaften steuern das Verhalten aller Flex-Elemente innerhalb des Containers.
+
+`flex-direction`
+Bestimmt die Hauptachse und damit die Richtung, in der die Flex-Elemente angeordnet werden.
+
+- row (Standard): Elemente werden von links nach rechts angeordnet.
+- column: Elemente werden von oben nach unten angeordnet.
+
+```css
+.container {
+  display: flex;
+  flex-direction: row;
+}
+```
+
+`flex-wrap`
+Legt fest, ob die Elemente in die nächste Zeile umbrechen dürfen, falls nicht genügend Platz vorhanden ist.
+
+- nowrap (Standard): Kein Umbruch, die Elemente werden ggf. gestaucht.
+- wrap: Elemente fließen in die nächste Zeile um.
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+```
+
+`justify-content`
+Richtet die Elemente entlang der Hauptachse aus.
+
+- flex-start: Am Anfang des Containers.
+- flex-end: Am Ende des Containers.
+- center: In der Mitte des Containers.
+- space-between: Gleichmäßiger Abstand zwischen den Elementen.
+- space-around: Gleichmäßiger Abstand um die Elemente herum.
+
+```css
+.container {
+  display: flex;
+  justify-content: center;
+}
+```
+
+`align-items`
+Richtet die Elemente entlang der Querachse (senkrecht zur Hauptachse) aus.
+
+- flex-start: Am Anfang der Querachse.
+- flex-end: Am Ende der Querachse.
+- center: In der Mitte der Querachse.
+- stretch (Standard): Elemente füllen die gesamte Höhe/Breite des Containers aus.
+
+```css
+.container {
+  display: flex;
+  align-items: center;
+}
+```
+
+### 7.3 Eigenschaften für Flex-Elemente
+Diese Eigenschaften werden direkt auf die Kindelemente angewendet und können die Container-Einstellungen überschreiben.
+
+`align-self`
+Überschreibt align-items für ein einzelnes Flex-Element.
+
+```css
+.item-1 {
+  align-self: flex-end; /* Dieses eine Element wird am Ende ausgerichtet */
+}
+```
+
+`flex-grow`
+Gibt an, wie stark ein Element im Verhältnis zu den anderen wachsen darf, wenn freier Platz vorhanden ist. Der Wert ist eine Zahl ohne Einheit.
+
+```css
+.item-2 {
+  flex-grow: 2; /* Wächst doppelt so stark wie andere Elemente */
+}
+```
+
+`flex-shrink`
+Gibt an, wie stark ein Element im Verhältnis zu den anderen schrumpfen darf, wenn nicht genügend Platz vorhanden ist.
+
+```css
+.item-3 {
+  flex-shrink: 0; /* Dieses Element schrumpft nicht */
+}
+```
+
+`flex-basis`
+Definiert die Standardgröße eines Elements, bevor der restliche Platz verteilt wird.
+
+```css
+.item-4 {
+  flex-basis: 200px; /* Startet mit einer Breite von 200px */
+}
+```
