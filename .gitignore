@@ -9,4 +9,4 @@
 *.html
 
 # 2. make an exception for html files inside the public/ directory
-!public/**/*.html
+!docs/**/*.html

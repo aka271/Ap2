@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Datenbanken.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="../template.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="datenbanken">Datenbanken</h1>
+<ul>
+<li><a href="#datenbanken">Datenbanken</a>
+<ul>
+<li><a href="#grundlagen">Grundlagen</a>
+<ul>
+<li><a href="#definition">Definition</a></li>
+<li><a href="#kernkomponenten">Kernkomponenten</a></li>
+</ul>
+</li>
+<li><a href="#datenbankmodelle">Datenbankmodelle</a>
+<ul>
+<li><a href="#relationale-datenbanken-sql">Relationale Datenbanken (SQL)</a></li>
+<li><a href="#nosql-datenbanken">NoSQL-Datenbanken</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#er-modelle">ER-Modelle</a></li>
+<li><a href="#prim%C3%A4rschl%C3%BCssel--fremdschl%C3%BCssel">Primärschlüssel / Fremdschlüssel</a>
+<ul>
+<li><a href="#datenbanksysteme-im-vergleich">Datenbanksysteme im Vergleich</a>
+<ul>
+<li><a href="#open-source">Open Source</a></li>
+<li><a href="#kommerzielle-systeme">Kommerzielle Systeme</a></li>
+</ul>
+</li>
+<li><a href="#auswahlkriterien">Auswahlkriterien</a></li>
+<li><a href="#aktuelle-trends">Aktuelle Trends</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="grundlagen">Grundlagen</h2>
+<h3 id="definition">Definition</h3>
+<ul>
+<li>Systematische Sammlung von Daten</li>
+<li>Elektronische Verwaltung großer Datenmengen</li>
+<li>Ermöglicht effizientes Speichern, Aktualisieren und Abfragen</li>
+</ul>
+<h3 id="kernkomponenten">Kernkomponenten</h3>
+<ul>
+<li><strong>DBMS</strong> (Datenbankmanagementsystem)</li>
+<li><strong>Tabellen</strong> mit Zeilen (Datensätze) und Spalten (Attribute)</li>
+<li><strong>Indizes</strong> für schnellen Zugriff</li>
+<li><strong>Abfragesprachen</strong> (SQL, NoSQL)</li>
+</ul>
+<hr>
+<h2 id="datenbankmodelle">Datenbankmodelle</h2>
+<h3 id="relationale-datenbanken-sql">Relationale Datenbanken (SQL)</h3>
+<p><strong>Merkmale</strong>:</p>
+<ul>
+<li>Tabellenbasierte Struktur</li>
+<li>Strikte Schema-Definition</li>
+<li>ACID-konform (Atomicity, Consistency, Isolation, Durability)</li>
+</ul>
+<p><strong>Vorteile</strong>:</p>
+<ul>
+<li>Datenintegrität</li>
+<li>Komplexe Abfragen möglich</li>
+<li>Standardisierte Sprache (SQL)</li>
+</ul>
+<blockquote>
+<p><strong>Einsatzbeispiele</strong>:<br>
+Finanzsysteme, Lagerverwaltung, CRM</p>
+</blockquote>
+<h3 id="nosql-datenbanken">NoSQL-Datenbanken</h3>
+<p><strong>Typen</strong>:</p>
+<ol>
+<li>
+<p><strong>Dokumentenorientiert</strong> (MongoDB)</p>
+<ul>
+<li>JSON-ähnliche Dokumente</li>
+<li>Schema-flexibel</li>
+</ul>
+</li>
+<li>
+<p><strong>Key-Value</strong> (Redis)</p>
+<ul>
+<li>Einfache Schlüssel-Wert-Paare</li>
+<li>Hohe Performance</li>
+</ul>
+</li>
+<li>
+<p><strong>Spaltenorientiert</strong> (Cassandra)</p>
+<ul>
+<li>Optimiert für Analytics</li>
+<li>Gute Skalierbarkeit</li>
+</ul>
+</li>
+<li>
+<p><strong>Graphdatenbanken</strong> (Neo4j)</p>
+<ul>
+<li>Beziehungsorientiert</li>
+<li>Ideal für Netzwerkanalysen</li>
+</ul>
+</li>
+</ol>
+<p><strong>Vorteile</strong>:</p>
+<ul>
+<li>Flexible Datenmodelle</li>
+<li>Horizontale Skalierung</li>
+<li>Hohe Verfügbarkeit</li>
+</ul>
+<blockquote>
+<p><strong>Typische Anwendungen</strong>:<br>
+Big Data, Echtzeit-Analysen, Content-Management</p>
+</blockquote>
+<hr>
+<p>TODO:</p>
+<h1 id="er-modelle">ER-Modelle</h1>
+<h1 id="prim%C3%A4rschl%C3%BCssel--fremdschl%C3%BCssel">Primärschlüssel / Fremdschlüssel</h1>
+<h2 id="datenbanksysteme-im-vergleich">Datenbanksysteme im Vergleich</h2>
+<h3 id="open-source">Open Source</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Typ</th>
+<th>Besonderheit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PostgreSQL</td>
+<td>Relational</td>
+<td>Erweiterbar, JSON-Unterstützung</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>Relational</td>
+<td>Sehr verbreitet</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>Dokumentenorientiert</td>
+<td>Flexible Schemata</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>Key-Value</td>
+<td>In-Memory, extrem schnell</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kommerzielle-systeme">Kommerzielle Systeme</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Hersteller</th>
+<th>Zielgruppe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle DB</td>
+<td>Oracle</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>SQL Server</td>
+<td>Microsoft</td>
+<td>Windows-Umgebungen</td>
+</tr>
+<tr>
+<td>Db2</td>
+<td>IBM</td>
+<td>Großunternehmen</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="auswahlkriterien">Auswahlkriterien</h2>
+<ol>
+<li>
+<p><strong>Datenstruktur</strong></p>
+<ul>
+<li>Tabellarisch → SQL</li>
+<li>Komplex/hierarchisch → NoSQL</li>
+</ul>
+</li>
+<li>
+<p><strong>Skalierungsbedarf</strong></p>
+<ul>
+<li>Vertikal (SQL)</li>
+<li>Horizontal (NoSQL)</li>
+</ul>
+</li>
+<li>
+<p><strong>Konsistenzanforderungen</strong></p>
+<ul>
+<li>Starke Konsistenz → ACID</li>
+<li>Eventual Consistency → BASE</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance-Anforderungen</strong></p>
+<ul>
+<li>Leseintensiv → Spaltenorientiert</li>
+<li>Schreibintensiv → Key-Value</li>
+</ul>
+</li>
+<li>
+<p><strong>Budget</strong></p>
+<ul>
+<li>Open Source vs. Lizenzkosten</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="aktuelle-trends">Aktuelle Trends</h2>
+<ul>
+<li><strong>Cloud-Datenbanken</strong>: AWS Aurora, Google Cloud Spanner</li>
+<li><strong>Multi-Model-Datenbanken</strong>: Kombination verschiedener Modelle</li>
+<li><strong>Edge Computing</strong>: Dezentrale Datenhaltung</li>
+<li><strong>Vector Databases</strong>: Für KI/ML-Anwendungen</li>
+</ul>
+
+</body>
+</html>

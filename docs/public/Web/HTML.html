@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="../template.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="hypertext-markup-language-html">Hypertext Markup Language (HTML)</h1>
+<ul>
+<li><a href="#hypertext-markup-language-html">Hypertext Markup Language (HTML)</a>
+<ul>
+<li><a href="#1-was-ist-html">1. Was ist HTML?</a>
+<ul>
+<li><a href="#11-beispiel">1.1 Beispiel</a></li>
+</ul>
+</li>
+<li><a href="#12-html-dokumente">1.2 HTML-Dokumente</a>
+<ul>
+<li><a href="#121-document-object-model">1.2.1 Document Object Model</a></li>
+</ul>
+</li>
+<li><a href="#13-html-elemente">1.3 HTML-Elemente</a>
+<ul>
+<li><a href="#131-attribute">1.3.1 Attribute</a>
+<ul>
+<li><a href="#1311-klassen">1.3.1.1 Klassen</a></li>
+<li><a href="#1312-ids">1.3.1.2 IDs</a></li>
+</ul>
+</li>
+<li><a href="#132-html-kommentare">1.3.2 HTML Kommentare</a></li>
+</ul>
+</li>
+<li><a href="#14-grundlegende-html-elemente">1.4 Grundlegende HTML-Elemente</a>
+<ul>
+<li><a href="#141-%C3%BCberschriften">1.4.1 Überschriften</a></li>
+<li><a href="#142-paragraphen">1.4.2 Paragraphen</a></li>
+<li><a href="#143-grafiken-einbinden">1.4.3 Grafiken einbinden</a></li>
+<li><a href="#144-links">1.4.4 Links</a></li>
+<li><a href="#145-fett-und-kursiv">1.4.5 Fett und kursiv</a></li>
+<li><a href="#146-listen">1.4.6 Listen</a></li>
+<li><a href="#147-container--bereiche">1.4.7 Container / Bereiche</a></li>
+</ul>
+</li>
+<li><a href="#15-tabellen">1.5 Tabellen</a>
+<ul>
+<li><a href="#151-mehrere-zellen-miteinander-verbinden">1.5.1 Mehrere Zellen miteinander verbinden</a></li>
+</ul>
+</li>
+<li><a href="#16-eingabefelder">1.6 Eingabefelder</a>
+<ul>
+<li><a href="#161-grundlegende-elemente">1.6.1 Grundlegende Elemente</a>
+<ul>
+<li><a href="#1611-textfeld">1.6.1.1 Textfeld</a></li>
+<li><a href="#1612-textfeld-mit-beschriftung-label">1.6.1.2 Textfeld mit Beschriftung (Label)</a></li>
+<li><a href="#1613-textfeld-mit-ausf%C3%BCllhilfe-placeholder">1.6.1.3 Textfeld mit Ausfüllhilfe (Placeholder)</a></li>
+<li><a href="#1614-textfeld-vorausgef%C3%BCllt-value">1.6.1.4 Textfeld vorausgefüllt (Value)</a></li>
+<li><a href="#1615-textfeld-f%C3%BCr-passw%C3%B6rter">1.6.1.5 Textfeld für Passwörter</a></li>
+<li><a href="#1616-checkbox">1.6.1.6 Checkbox</a></li>
+<li><a href="#1617-radio-buttons">1.6.1.7 Radio Buttons</a></li>
+<li><a href="#1618-dropdown-menus">1.6.1.8 Dropdown Menus</a></li>
+<li><a href="#1619-mehrzeilige-textfelder-textarea">1.6.1.9 mehrzeilige Textfelder (Textarea)</a></li>
+<li><a href="#16110-buttons">1.6.1.10 Buttons</a></li>
+</ul>
+</li>
+<li><a href="#162-formulare">1.6.2 Formulare</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-was-ist-html">1. Was ist HTML?</h2>
+<p>HTML steht für <strong>Hypertext Markup Language</strong></p>
+<ul>
+<li>HTML beschreibt die Struktur einer Webseite</li>
+<li>HTML besteht aus Elementen</li>
+<li>HTML wird in Dateien mit der Endung .html gespeichert</li>
+<li>HTML-Dateien werden auf einem Server gespeichert, auf Anfrage zum Browser übertragen und
+von diesem angezeigt.</li>
+</ul>
+<h3 id="11-beispiel">1.1 Beispiel</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Seitentitel<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Dies ist eine Überschrift<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Dies ist ein Textblock.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<h2 id="12-html-dokumente">1.2 HTML-Dokumente</h2>
+<p>Jedes HTML-Dokument beginnt mit der Zeile:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+</div></code></pre>
+<p>und besitzt folgende Grundstruktur:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"de"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Seitentitel<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Hier steht der im Browserfenster angezeigte Inhalt --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<ul>
+<li>Das head-Element enthält Metadaten wie Titel und weitere Einstellungen und Verweise auf weitere
+Resourcen (Styles, Skripte, Schriftarten, …)</li>
+<li>Das body-Element enthält den Inhalt, der im Browserfenster angezeigt wird.</li>
+</ul>
+<h3 id="121-document-object-model">1.2.1 Document Object Model</h3>
+<p>HTML-Code ist hierarchisch aufgebaut, da die Elemente ineinander verschachtelt sind.
+Der Browser erzeugt aus dem HTML-Code eine Baumstruktur, das sogenannte Document Object Model
+(DOM). Das DOM enthält Elementknoten, Attributknoten und Textknoten.</p>
+<h2 id="13-html-elemente">1.3 HTML-Elemente</h2>
+<p>Ein HTML-Element besteht aus einem öffnenden Tag, einem Inhalt und einem schließenden Tag:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">tagname</span>&gt;</span>Inhalt<span class="hljs-tag">&lt;/<span class="hljs-name">tagname</span>&gt;</span>
+</div></code></pre>
+<p>Das gesamte nennt sich Element.<br>
+Der Name des Elements ist der Tagname.</p>
+<p>Es gibt Ausnahmen:
+Manche Elemente bestehen nur aus einem einzelnen Tagnamen ohne Inhalt und schließendes Tag:</p>
+<pre class="hljs"><code><div> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+</div></code></pre>
+<p>Elemente können ineinander verschachtelt sein, das innere Element muss aber vor dem äußeren
+geschlossen werden.</p>
+<h3 id="131-attribute">1.3.1 Attribute</h3>
+<ul>
+<li>HTML-Attribute beschreiben zusätzliche Eigenschaften von HTML-Elementen.</li>
+<li>Attribute werden immer im öffnenden Tag angegeben.</li>
+<li>Attribute sind typischerweise Name/Werte-Paare: name=&quot;wert&quot;</li>
+</ul>
+<p>Beispiel:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://google.com/"</span>&gt;</span>Zur Seite google.com<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<p>Das Element a hat hier ein Attribut mit dem Namen href und dem Wert „https://google.com/“.</p>
+<h4 id="1311-klassen">1.3.1.1 Klassen</h4>
+<p>Klassen sind nicht zu verwechseln mit Klassen aus der objektorientierte Programmierung. Sie dienen in
+HTML zur zusätzlichen Identifikation von Elementen, um mehrere gleichnamige Elemente
+auseinanderhalten zu können. Dies ist wichtig, wenn man von CSS oder JavaScript darauf verweisen
+möchte.
+HTML:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"menu"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<p>CSS:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.menu</span> { <span class="hljs-attribute">background-color</span>: grey; }
+</div></code></pre>
+<p>JavaScript:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> menu = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".menu"</span>);
+</div></code></pre>
+<h4 id="1312-ids">1.3.1.2 IDs</h4>
+<p>Anstatt Klassen können zur Identifikation von Elementen auch IDs verwendet werden. IDs dürfen pro
+HTML-Dokument jedoch nur einmal vorkommen. Besteht keine Notwendigkeit zur Verwendung von IDs,
+sollte man Klassen verwenden.
+HTML:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"menu"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<p>CSS:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-id">#menu</span> { <span class="hljs-attribute">background-color</span>: grey; }
+</div></code></pre>
+<p>JavaScript:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> menu = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#menu"</span>);
+</div></code></pre>
+<h3 id="132-html-kommentare">1.3.2 HTML Kommentare</h3>
+<p>HTML Kommentare werden im Browser nicht angezeigt, aber können eine Hilfe bei der Dokumentation des
+Codes sein.</p>
+<pre class="hljs"><code><div> <span class="hljs-comment">&lt;!-- Das ist ein Kommentar --&gt;</span>
+</div></code></pre>
+<h2 id="14-grundlegende-html-elemente">1.4 Grundlegende HTML-Elemente</h2>
+<ul>
+<li><strong>h1-h6:</strong> Überschriften</li>
+<li><strong>p:</strong> Paragraf / Absatz</li>
+<li><strong>br:</strong> neue Zeile im Paragraf</li>
+<li><strong>img:</strong> Grafik</li>
+<li><strong>a:</strong> Link</li>
+<li><strong>b, i</strong></li>
+<li><strong>ul, ol, li:</strong> Listen / Aufzählungen</li>
+<li><strong>div:</strong> Block-Container</li>
+<li><strong>span:</strong> Inline-Container</li>
+</ul>
+<h3 id="141-%C3%BCberschriften">1.4.1 Überschriften</h3>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Dies ist die größte Überschrift<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+…
+<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span>Dies ist die kleinste Überschrift<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<h1>Dies ist die größte Überschrift</h1>
+…<br>
+</h6>Dies ist die kleinste Überschrift</h6>
+</blockquote>
+<h3 id="142-paragraphen">1.4.2 Paragraphen</h3>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    Dies ist ein Textabschnitt mit Zeilenumbruch.<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    Dies ist die zweite Zeile.
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p>
+    Dies ist ein Textabschnitt mit Zeilenumbruch.<br>
+    Dies ist die zweite Zeile.
+</p>
+</blockquote>
+<h3 id="143-grafiken-einbinden">1.4.3 Grafiken einbinden</h3>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"pfeil.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Pfeil"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Pfeil"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"100px"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"100px"</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<img src="./img/pfeil.jpg" alt="Pfeil" title="Pfeil" width="100px" height="100px">
+</blockquote>
+<p>Attribute:</p>
+<ul>
+<li><strong>src:</strong> Der Dateiname der Grafik. Auch Pfade sind erlaubt: src=&quot;../bilder/pfeil.png&quot;</li>
+<li><strong>alt:</strong> Ein Alternativtext, falls die Grafik nicht angezeigt werden kann oder für Bildschirmleser</li>
+<li><strong>title:</strong> Ein Text der angezeigt wird, wenn man mit der Maus das Bild berührt.</li>
+<li><strong>width:</strong> Die Breite der Grafik.</li>
+<li><strong>height:</strong> Die Höhe der Grafik.</li>
+</ul>
+<h3 id="144-links">1.4.4 Links</h3>
+<p>Weiterleitung auf andere Seiten:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://google.com"</span>&gt;</span>
+    Besuche Google
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<a href="https://google.com">
+    Besuche Google
+</a>
+</blockquote>
+<p>Weiterleitung auf Inhalte der gleichen Seite, z.B. an den Seitenanfang, der z.B. durch die id „wrapper“
+gekennzeichnet ist.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#wrapper"</span>&gt;</span>
+ nach oben
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<a href="#wrapper">
+ nach oben
+</a>
+</blockquote>
+<h3 id="145-fett-und-kursiv">1.4.5 Fett und kursiv</h3>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Ich bin fett gedruckt.<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Und ich bin kursiv gedruckt.<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><b>Ich bin fett gedruckt.</b><br>
+<i>Und ich bin kursiv gedruckt.</i></p>
+</blockquote>
+<h3 id="146-listen">1.4.6 Listen</h3>
+<p><strong>ungeordnete Liste</strong> (ohne Nummerierung):</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>2 Eier<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>200 ml Milch<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>1 Prise Zucker<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>1 Prise Salz<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>200 g Mehl<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>60 ml Mineralwasser<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<ul>
+    <li>2 Eier</li>
+    <li>200 ml Milch</li>
+    <li>1 Prise Zucker</li>
+    <li>1 Prise Salz</li>
+    <li>200 g Mehl</li>
+    <li>60 ml Mineralwasser</li>
+</ul>
+</blockquote>
+<p><strong>geordnete Liste</strong> mit Nummerierung (1., 2., 3., ...):</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Zutaten zu einem glatten Teig rühren.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Eine Pfanne mit etwas Speiseöl erhitzen.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Mit einer Kelle Teig in die Pfanne geben und verteilen.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Den Pfannkuchen etwa 1-2 Minuten ausbacken.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<ol>
+    <li>Zutaten zu einem glatten Teig rühren.</li>
+    <li>Eine Pfanne mit etwas Speiseöl erhitzen.</li>
+    <li>Mit einer Kelle Teig in die Pfanne geben und verteilen.</li>
+    <li>Den Pfannkuchen etwa 1-2 Minuten ausbacken.</li>
+</ol>
+</blockquote>
+<h3 id="147-container--bereiche">1.4.7 Container / Bereiche</h3>
+<p>Mit den Elementen div und span definiert man Container, die weitere Elemente enthalten können.
+Block-Container erstrecken sich über die gesamte Bildschirmbreite. Sie enthalten z.B. Textabschnitte,
+Bilder, Menüs oder weitere Unterbereiche.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>..<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<p>Inline-Container sind nur so breit wie der Inhalt selbst. Sie werden meistens verwendet um bestimmte
+Bereiche innerhalb einer Textzeile zu definieren.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>..<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</div></code></pre>
+<h2 id="15-tabellen">1.5 Tabellen</h2>
+<p>Tabellen werden in HTML mit dem table-Element dargestellt. Das table-Element beinhaltet weitere
+Elemente zur Beschreibung der Zeilen und Spalten.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Wochentag<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Datum<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Montag<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>02.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dienstag<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>03.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Mittwoch<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>04.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Donnerstag<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>05.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Freitag<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>06.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Samstag<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>07.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Sonntag<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>08.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<table>
+    <tr>
+        <th>Wochentag</th>
+        <th>Datum</th>
+    </tr>
+    <tr>
+        <td>Montag</td>
+        <td>02.10.2023</td>
+    </tr>
+    <tr>
+        <td>Dienstag</td>
+        <td>03.10.2023</td>
+    </tr>
+    <tr>
+        <td>Mittwoch</td>
+        <td>04.10.2023</td>
+    </tr>
+    <tr>
+        <td>Donnerstag</td>
+        <td>05.10.2023</td>
+    </tr>
+    <tr>
+        <td>Freitag</td>
+        <td>06.10.2023</td>
+    </tr>
+    <tr>
+        <td>Samstag</td>
+        <td>07.10.2023</td>
+    </tr>
+    <tr>
+        <td>Sonntag</td>
+        <td>08.10.2023</td>
+    </tr>
+</table>
+</blockquote>
+<p>Das tr-Element definiert eine neue Zeile. Zeilen bestehen wiederum aus td-Elementen, die einzelne Zellen
+definieren. Die Zellen enthalten beliebige Inhalte, wie z.B. Text oder weitere HTML-Elemente wie Links,
+Bilder oder Listen.</p>
+<p><strong>table:</strong> Die gesamte Tabelle<br>
+<strong>tr (table row):</strong> Tabellenzeile<br>
+<strong>td (table data):</strong> Zelle innerhalb einer Zeile, dadurch werden die Spalten definiert.<br>
+<strong>th (table head):</strong> Zelle wird fettgedruckt. Zur Markierung von Spalten- oder Zeilenüberschriften</p>
+<h3 id="151-mehrere-zellen-miteinander-verbinden">1.5.1 Mehrere Zellen miteinander verbinden</h3>
+<p>Mehrere Zellen innerhalb einer Zeile können mit dem Attribut colspan und der Angabe der Anzahl der zu
+verbindenden Zellen verbunden werden. Es entsteht damit eine größere Zelle über mehrere Spalten.
+Mehrere Zellen innerhalb einer Spalte können mit dem Attribut rowspan und der Angabe der Anzahl der zu
+verbindenden Zellen verbunden werden. Es entsteht damit eine größere Zelle über mehrere Zeilen.
+Beispiel mit rowspan:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Wochentag<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Datum<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">"5"</span>&gt;</span>Arbeitstage<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>02.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>03.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>04.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>05.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>06.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">"2"</span>&gt;</span>Wochenende<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>07.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>08.10.2023<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<table>
+    <tr>
+        <th>Wochentag</th><th>Datum</th>
+    </tr>
+    <tr>
+        <td rowspan="5">Arbeitstage</td>
+        <td>02.10.2023</td>
+    </tr>
+    <tr>
+        <td>03.10.2023</td>
+    </tr>
+    <tr>
+        <td>04.10.2023</td>
+    </tr>
+    <tr>
+        <td>05.10.2023</td>
+    </tr>
+    <tr>
+        <td>06.10.2023</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Wochenende</td>
+        <td>07.10.2023</td>
+    </tr>
+    <tr>
+        <td>08.10.2023</td>
+    </tr>
+</table>
+</blockquote>
+<h2 id="16-eingabefelder">1.6 Eingabefelder</h2>
+<h3 id="161-grundlegende-elemente">1.6.1 Grundlegende Elemente</h3>
+<h4 id="1611-textfeld">1.6.1.1 Textfeld</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<input type="text">
+</blockquote>
+<h4 id="1612-textfeld-mit-beschriftung-label">1.6.1.2 Textfeld mit Beschriftung (Label)</h4>
+<p>Das Label bewirkt, dass man auch auf die Beschriftung klicken kann, um das Textfeld zu fokussieren.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Vorname
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><label>Vorname
+<input type="text">
+</label></p>
+</blockquote>
+<h4 id="1613-textfeld-mit-ausf%C3%BCllhilfe-placeholder">1.6.1.3 Textfeld mit Ausfüllhilfe (Placeholder)</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Vorname"</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<input type="text" placeholder="Vorname">
+</blockquote>
+<h4 id="1614-textfeld-vorausgef%C3%BCllt-value">1.6.1.4 Textfeld vorausgefüllt (Value)</h4>
+<p>Das „value“-Attribut enthält den Inhalt vom Textfeld.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Max"</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<input type="text" value="Max">
+</blockquote>
+<h4 id="1615-textfeld-f%C3%BCr-passw%C3%B6rter">1.6.1.5 Textfeld für Passwörter</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Passwort
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><label>Passwort
+<input type="password" value="Hello_world">
+</label></p>
+</blockquote>
+<h4 id="1616-checkbox">1.6.1.6 Checkbox</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>IT-ler
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><label>IT-ler
+<input type="checkbox">
+</label></p>
+</blockquote>
+<p>Um eine Checkbox standardmäßig auszuwählen, wird das <code>checked</code>-Attribut verwendet.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>IT-ler
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><label>IT-ler
+<input type="checkbox" checked>
+</label></p>
+</blockquote>
+<h4 id="1617-radio-buttons">1.6.1.7 Radio Buttons</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"color"</span>&gt;</span>Rot
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"color"</span> <span class="hljs-attr">checked</span>&gt;</span>Grün
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"color"</span>&gt;</span>Blau
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<label>
+    <input type="radio" name="color">Rot
+</label><br>
+<label>
+    <input type="radio" name="color" checked>Grün
+</label><br>
+<label>
+    <input type="radio" name="color">Blau
+</label><br>
+</blockquote>
+<h4 id="1618-dropdown-menus">1.6.1.8 Dropdown Menus</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"red"</span>&gt;</span>Rot<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"green"</span>&gt;</span>Grün<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"blue"</span>&gt;</span>Blau<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<select>
+    <option value="red">Rot</option>
+    <option value="green">Grün</option>
+    <option value="blue">Blau</option>
+</select>
+</blockquote>
+<h4 id="1619-mehrzeilige-textfelder-textarea">1.6.1.9 mehrzeilige Textfelder (Textarea)</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"10"</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"30"</span>&gt;</span>Die Katze spielt im Garten.<span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><textarea rows="10" cols="30">Die Katze spielt im Garten.</textarea></p>
+</blockquote>
+<h4 id="16110-buttons">1.6.1.10 Buttons</h4>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Anmelden<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><button>Anmelden</button></p>
+</blockquote>
+<h3 id="162-formulare">1.6.2 Formulare</h3>
+<p>Um die eingegebenen Daten an einen Server zu senden, müssen die Eingabeelemente in einem <code>&lt;form&gt;</code>-Element zusammengefasst werden. Dieses Element definiert ein Formular, das Daten sammeln und versenden kann.</p>
+<p>Wichtige Attribute des <code>&lt;form&gt;</code>-Elements sind:</p>
+<ul>
+<li><strong>action</strong>: Gibt die URL (den Endpunkt auf dem Server) an, an die die Formulardaten gesendet werden sollen.</li>
+<li><strong>method</strong>: Gibt die HTTP-Methode an, die für den Versand verwendet werden soll. Gängige Werte sind <code>GET</code> und <code>POST</code>.
+<ul>
+<li><strong>GET</strong>: Hängt die Formulardaten an die URL an (z.B. <code>?name=wert&amp;...</code>). Geeignet für unkritische Daten wie Suchanfragen.</li>
+<li><strong>POST</strong>: Sendet die Formulardaten im &quot;Körper&quot; (Body) der HTTP-Anfrage. Dies ist die bevorzugte Methode für sensible Daten (z.B. Passwörter) oder wenn große Datenmengen gesendet werden.</li>
+</ul>
+</li>
+</ul>
+<p>Damit die Daten eines Eingabefeldes korrekt übermittelt werden, muss jedes Eingabeelement ein <code>name</code>-Attribut haben. Der Wert dieses Attributs dient als Schlüssel für die gesendeten Daten.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/anmeldung"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"username"</span>&gt;</span>Benutzername:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">required</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Passwort:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">required</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Anmelden<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<form action="/anmeldung" method="post">
+    <label for="username">Benutzername:</label><br>
+    <input type="text" id="username" name="username" required=""><br><br>
+    <label for="password">Passwort:</label><br>
+    <input type="password" id="password" name="password" required=""><br><br>
+    <button type="submit">Anmelden</button>
+</form>
+</blockquote>
+
+</body>
+</html>
