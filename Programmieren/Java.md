@@ -18,6 +18,7 @@
     - [2.6 Strings](#26-strings)
     - [2.7 Verzweigungen](#27-verzweigungen)
     - [2.8 Schleifen](#28-schleifen)
+  - [3. Arrays und Listen](#3-arrays-und-listen)
 
 
 ## 1. Programmiersprachen
@@ -402,3 +403,4 @@ for (int i = 1; i <= 5; i++) {
 // Ausgabe ist identisch zur while-Schleife oben.
 ```
 
+## 3. Arrays und Listen
