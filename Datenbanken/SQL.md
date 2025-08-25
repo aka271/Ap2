@@ -3,6 +3,32 @@ SQL (Structured Query Language) is a standard programming language used to manag
 
 A good practice website can be found [here](https://www.sql-practice.com/).
 
+- [SQL](#sql)
+  - [SQL SELECT WHERE](#sql-select-where)
+  - [SQL SELECT ORDER BY ASC, DESC](#sql-select-order-by-asc-desc)
+  - [SQL SELECT GROUP BY, HAVING](#sql-select-group-by-having)
+    - [GROUP BY](#group-by)
+    - [HAVING](#having)
+  - [SQL SELECT SUM, COUNT, MIN, MAX, AVG](#sql-select-sum-count-min-max-avg)
+    - [COUNT](#count)
+    - [AVG](#avg)
+    - [SUM](#sum)
+    - [MIN/MAX](#minmax)
+  - [SQL SELECT LIKE, IN, BETWEEN](#sql-select-like-in-between)
+    - [LIKE](#like)
+    - [IN](#in)
+    - [BETWEEN](#between)
+  - [SQL INSERT INTO](#sql-insert-into)
+  - [SQL UPDATE SET](#sql-update-set)
+  - [SQL DELETE FROM](#sql-delete-from)
+  - [SQL CREATE TABLE](#sql-create-table)
+  - [SQL JOINs](#sql-joins)
+    - [Different Types of SQL JOINs](#different-types-of-sql-joins)
+  - [SQL datatypes: INT, DOUBLE, VARCHAR, BOOLEAN](#sql-datatypes-int-double-varchar-boolean)
+  - [SQL datatypes: DATE, TIMESTAMP](#sql-datatypes-date-timestamp)
+  - [SQL relationship model](#sql-relationship-model)
+
+
 ## SQL SELECT WHERE
 The <span style="color: red;">WHERE</span> clause is used to filter records.\
 It is used to extract only those records that fulfill a specified condition.

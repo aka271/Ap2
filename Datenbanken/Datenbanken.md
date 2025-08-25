@@ -1,8 +1,6 @@
 # Datenbanken
 
-## TOC
 - [Datenbanken](#datenbanken)
-  - [TOC](#toc)
   - [Grundlagen](#grundlagen)
     - [Definition](#definition)
     - [Kernkomponenten](#kernkomponenten)

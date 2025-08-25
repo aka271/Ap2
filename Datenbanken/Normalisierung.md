@@ -1,8 +1,6 @@
 # Normalisierung (Dataenbanken)
 
-## TOC
 - [Normalisierung (Dataenbanken)](#normalisierung-dataenbanken)
-  - [TOC](#toc)
   - [Allgemein](#allgemein)
   - [Normalform (1NF)](#normalform-1nf)
   - [Normalform (2NF)](#normalform-2nf)

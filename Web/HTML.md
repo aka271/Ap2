@@ -8,7 +8,7 @@
   - [1.3 HTML-Elemente](#13-html-elemente)
     - [1.3.1 Attribute](#131-attribute)
       - [1.3.1.1 Klassen](#1311-klassen)
-      - [1.3.1.2IDs](#1312ids)
+      - [1.3.1.2 IDs](#1312-ids)
     - [1.3.2 HTML Kommentare](#132-html-kommentare)
   - [1.4 Grundlegende HTML-Elemente](#14-grundlegende-html-elemente)
     - [1.4.1 Überschriften](#141-überschriften)
@@ -131,7 +131,7 @@ JavaScript:
 let menu = document.querySelector(".menu");
 ```
 
-#### 1.3.1.2IDs
+#### 1.3.1.2 IDs
 Anstatt Klassen können zur Identifikation von Elementen auch IDs verwendet werden. IDs dürfen pro
 HTML-Dokument jedoch nur einmal vorkommen. Besteht keine Notwendigkeit zur Verwendung von IDs,
 sollte man Klassen verwenden.
@@ -172,9 +172,9 @@ Codes sein.
 …
 </h6>Dies ist die kleinste Überschrift</h6>
 ```
-<h1>Dies ist die größte Überschrift</h1>
-…
-</h6>Dies ist die kleinste Überschrift</h6>
+> <h1>Dies ist die größte Überschrift</h1>
+> …<br>
+> </h6>Dies ist die kleinste Überschrift</h6>
 
 ### 1.4.2 Paragraphen
 ```html
@@ -183,10 +183,10 @@ Codes sein.
     Dies ist die zweite Zeile.
 </p>
 ```
-<p>
-    Dies ist ein Textabschnitt mit Zeilenumbruch.<br>
-    Dies ist die zweite Zeile.
-</p>
+> <p>
+>     Dies ist ein Textabschnitt mit Zeilenumbruch.<br>
+>     Dies ist die zweite Zeile.
+> </p>
 
 ### 1.4.3 Grafiken einbinden
 ```html
