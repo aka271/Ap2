@@ -32,7 +32,7 @@ Eine Tabelle befindet sich in der ersten Normalform, wenn alle Informationen in 
 - mehrere Telefonnummern in einem Feld
 - Kommalisten oder verschachtelte Werte
 
-![1NF](./src/1NF.png)
+![1NF](./img/1NF.png)
 
 
 ## Normalform (2NF)
@@ -46,7 +46,7 @@ Die zweite Normalform setzt voraus, dass die Tabelle bereits in der 1NF ist und 
 - mehrere Telefonnummern in einem Feld
 - Kommalisten oder verschachtelte Werte
 
-![2NF](./src/2NF.png)
+![2NF](./img/2NF.png)
 
 ## Normalform (3NF)
 Die dritte Normalform baut auf der 2NF auf, stellt aber zusätzlich sicher, dass kein Feld indirekt vom Primärschlüssel abhängig ist, also über ein anderes Nicht-Schlüsselattribut.
@@ -56,4 +56,4 @@ Die dritte Normalform baut auf der 2NF auf, stellt aber zusätzlich sicher, dass
 > – bereits in der 2NF ist und\
 > – kein Nicht-Schlüsselattribut transitiv vom Primärschlüssel abhängig ist.
 
-![3NF](./src/3NF.png)
+![3NF](./img/3NF.png)
