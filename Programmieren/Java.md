@@ -19,6 +19,8 @@
     - [2.7 Verzweigungen](#27-verzweigungen)
     - [2.8 Schleifen](#28-schleifen)
   - [3. Arrays und Listen](#3-arrays-und-listen)
+    - [3.1 Arrays](#31-arrays)
+    - [3.2 ArrayList](#32-arraylist)
 
 
 ## 1. Programmiersprachen
@@ -404,3 +406,56 @@ for (int i = 1; i <= 5; i++) {
 ```
 
 ## 3. Arrays und Listen
+### 3.1 Arrays
+Ein **Array** ist ein Datencontainer, der eine feste Anzahl von Werten des gleichen Datentyps speichert. Die Größe eines Arrays wird bei seiner Erstellung festgelegt und kann danach nicht mehr geändert werden.
+
+- **Deklaration**: `datentyp[] arrayName;`
+- **Initialisierung**: `arrayName = new datentyp[anzahlElemente];`
+- **Zugriff auf Elemente**: Über einen **Index**, der bei `0` beginnt. `arrayName[0]` ist das erste Element.
+
+**Beispiel**:
+```java
+// Ein Array für 5 ganze Zahlen deklarieren und initialisieren
+int[] zahlen = new int[5];
+
+// Werte zuweisen
+zahlen[0] = 10;
+zahlen[1] = 20;
+zahlen[2] = 30;
+zahlen[3] = 40;
+zahlen[4] = 50;
+
+// Auf ein Element zugreifen und ausgeben
+System.out.println("Das dritte Element ist: " + zahlen[2]); // Ausgabe: 30
+
+// Mit einer for-Schleife durch das Array iterieren
+System.out.println("Alle Elemente des Arrays:");
+for (int i = 0; i < zahlen.length; i++) {
+    System.out.println(zahlen[i]);
+}
+```
+
+### 3.2 ArrayList
+Eine **ArrayList** ist Teil des Java Collections Frameworks und eine flexiblere Alternative zum Array. Ihre Größe ist dynamisch, das heißt, Elemente können nach der Erstellung einfach hinzugefügt oder entfernt werden. Eine `ArrayList` kann jedoch nur Objekte speichern, keine primitiven Datentypen (statt `int` wird die Wrapper-Klasse `Integer` verwendet).
+
+**Beispiel**:
+```java
+import java.util.ArrayList; // Notwendiger Import
+
+// Eine ArrayList für Strings erstellen
+ArrayList<String> namen = new ArrayList<>();
+
+// Elemente hinzufügen
+namen.add("Ada");
+namen.add("Charles");
+namen.add("Grace");
+
+// Ein Element ausgeben
+System.out.println("Der zweite Name ist: " + namen.get(1)); // Ausgabe: Charles
+
+// Ein Element entfernen
+namen.remove(0); // Entfernt "Ada"
+
+// Die aktuelle Größe abfragen
+System.out.println("Anzahl der Namen in der Liste: " + namen.size()); // Ausgabe: 2
+```

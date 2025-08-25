@@ -127,7 +127,12 @@
 <li><a href="#28-schleifen">2.8 Schleifen</a></li>
 </ul>
 </li>
-<li><a href="#3-arrays-und-listen">3. Arrays und Listen</a></li>
+<li><a href="#3-arrays-und-listen">3. Arrays und Listen</a>
+<ul>
+<li><a href="#31-arrays">3.1 Arrays</a></li>
+<li><a href="#32-arraylist">3.2 ArrayList</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -487,6 +492,55 @@ Die <code>for</code>-Schleife ist ideal, wenn die Anzahl der Wiederholungen im V
 <span class="hljs-comment">// Ausgabe ist identisch zur while-Schleife oben.</span>
 </div></code></pre>
 <h2 id="3-arrays-und-listen">3. Arrays und Listen</h2>
+<h3 id="31-arrays">3.1 Arrays</h3>
+<p>Ein <strong>Array</strong> ist ein Datencontainer, der eine feste Anzahl von Werten des gleichen Datentyps speichert. Die Größe eines Arrays wird bei seiner Erstellung festgelegt und kann danach nicht mehr geändert werden.</p>
+<ul>
+<li><strong>Deklaration</strong>: <code>datentyp[] arrayName;</code></li>
+<li><strong>Initialisierung</strong>: <code>arrayName = new datentyp[anzahlElemente];</code></li>
+<li><strong>Zugriff auf Elemente</strong>: Über einen <strong>Index</strong>, der bei <code>0</code> beginnt. <code>arrayName[0]</code> ist das erste Element.</li>
+</ul>
+<p><strong>Beispiel</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Ein Array für 5 ganze Zahlen deklarieren und initialisieren</span>
+<span class="hljs-keyword">int</span>[] zahlen = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">5</span>];
+
+<span class="hljs-comment">// Werte zuweisen</span>
+zahlen[<span class="hljs-number">0</span>] = <span class="hljs-number">10</span>;
+zahlen[<span class="hljs-number">1</span>] = <span class="hljs-number">20</span>;
+zahlen[<span class="hljs-number">2</span>] = <span class="hljs-number">30</span>;
+zahlen[<span class="hljs-number">3</span>] = <span class="hljs-number">40</span>;
+zahlen[<span class="hljs-number">4</span>] = <span class="hljs-number">50</span>;
+
+<span class="hljs-comment">// Auf ein Element zugreifen und ausgeben</span>
+System.out.println(<span class="hljs-string">"Das dritte Element ist: "</span> + zahlen[<span class="hljs-number">2</span>]); <span class="hljs-comment">// Ausgabe: 30</span>
+
+<span class="hljs-comment">// Mit einer for-Schleife durch das Array iterieren</span>
+System.out.println(<span class="hljs-string">"Alle Elemente des Arrays:"</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; zahlen.length; i++) {
+    System.out.println(zahlen[i]);
+}
+</div></code></pre>
+<h3 id="32-arraylist">3.2 ArrayList</h3>
+<p>Eine <strong>ArrayList</strong> ist Teil des Java Collections Frameworks und eine flexiblere Alternative zum Array. Ihre Größe ist dynamisch, das heißt, Elemente können nach der Erstellung einfach hinzugefügt oder entfernt werden. Eine <code>ArrayList</code> kann jedoch nur Objekte speichern, keine primitiven Datentypen (statt <code>int</code> wird die Wrapper-Klasse <code>Integer</code> verwendet).</p>
+<p><strong>Beispiel</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> java.util.ArrayList; <span class="hljs-comment">// Notwendiger Import</span>
+
+<span class="hljs-comment">// Eine ArrayList für Strings erstellen</span>
+ArrayList&lt;String&gt; namen = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// Elemente hinzufügen</span>
+namen.add(<span class="hljs-string">"Ada"</span>);
+namen.add(<span class="hljs-string">"Charles"</span>);
+namen.add(<span class="hljs-string">"Grace"</span>);
+
+<span class="hljs-comment">// Ein Element ausgeben</span>
+System.out.println(<span class="hljs-string">"Der zweite Name ist: "</span> + namen.get(<span class="hljs-number">1</span>)); <span class="hljs-comment">// Ausgabe: Charles</span>
+
+<span class="hljs-comment">// Ein Element entfernen</span>
+namen.remove(<span class="hljs-number">0</span>); <span class="hljs-comment">// Entfernt "Ada"</span>
+
+<span class="hljs-comment">// Die aktuelle Größe abfragen</span>
+System.out.println(<span class="hljs-string">"Anzahl der Namen in der Liste: "</span> + namen.size()); <span class="hljs-comment">// Ausgabe: 2</span>
+</div></code></pre>
 
 </body>
 </html>
