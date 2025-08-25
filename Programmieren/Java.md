@@ -459,3 +459,5 @@ namen.remove(0); // Entfernt "Ada"
 // Die aktuelle Größe abfragen
 System.out.println("Anzahl der Namen in der Liste: " + namen.size()); // Ausgabe: 2
 ```
+
+<a href="/" class="button-clean">Go to Home</a>

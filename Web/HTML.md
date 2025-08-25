@@ -582,3 +582,5 @@ Damit die Daten eines Eingabefeldes korrekt übermittelt werden, muss jedes Eing
 >     <input type="password" id="password" name="password" required=""><br><br>
 >     <button type="submit">Anmelden</button>
 > </form>
+
+<a href="/" class="button-clean">Go to Home</a>

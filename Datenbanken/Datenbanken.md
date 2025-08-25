@@ -127,3 +127,5 @@ TODO:
 - **Multi-Model-Datenbanken**: Kombination verschiedener Modelle
 - **Edge Computing**: Dezentrale Datenhaltung
 - **Vector Databases**: Für KI/ML-Anwendungen
+
+<a href="/" class="button-clean">Go to Home</a>
