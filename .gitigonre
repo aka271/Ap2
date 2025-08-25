@@ -1,1 +1,12 @@
+# Ignore Visual Studio Code configuration folder
+.vscode/
+
+# Ignore script and document files
+*.sh
+*.pdf
+
+# 1. Ignore ALL html files in the entire project
 *.html
+
+# 2. make an exception for html files inside the public/ directory
+!public/**/*.html

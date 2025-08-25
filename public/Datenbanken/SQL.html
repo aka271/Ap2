@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SQL.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="../template.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="sql">SQL</h1>
+<p>SQL (Structured Query Language) is a standard programming language used to manage and manipulate relational databases. It allows users to interact with databases by performing operations.</p>
+<p>A good practice website can be found <a href="https://www.sql-practice.com/">here</a>.</p>
+<ul>
+<li><a href="#sql">SQL</a>
+<ul>
+<li><a href="#sql-select-where">SQL SELECT WHERE</a></li>
+<li><a href="#sql-select-order-by-asc-desc">SQL SELECT ORDER BY ASC, DESC</a></li>
+<li><a href="#sql-select-group-by-having">SQL SELECT GROUP BY, HAVING</a>
+<ul>
+<li><a href="#group-by">GROUP BY</a></li>
+<li><a href="#having">HAVING</a></li>
+</ul>
+</li>
+<li><a href="#sql-select-sum-count-min-max-avg">SQL SELECT SUM, COUNT, MIN, MAX, AVG</a>
+<ul>
+<li><a href="#count">COUNT</a></li>
+<li><a href="#avg">AVG</a></li>
+<li><a href="#sum">SUM</a></li>
+<li><a href="#minmax">MIN/MAX</a></li>
+</ul>
+</li>
+<li><a href="#sql-select-like-in-between">SQL SELECT LIKE, IN, BETWEEN</a>
+<ul>
+<li><a href="#like">LIKE</a></li>
+<li><a href="#in">IN</a></li>
+<li><a href="#between">BETWEEN</a></li>
+</ul>
+</li>
+<li><a href="#sql-insert-into">SQL INSERT INTO</a></li>
+<li><a href="#sql-update-set">SQL UPDATE SET</a></li>
+<li><a href="#sql-delete-from">SQL DELETE FROM</a></li>
+<li><a href="#sql-create-table">SQL CREATE TABLE</a></li>
+<li><a href="#sql-joins">SQL JOINs</a>
+<ul>
+<li><a href="#different-types-of-sql-joins">Different Types of SQL JOINs</a></li>
+</ul>
+</li>
+<li><a href="#sql-datatypes-int-double-varchar-boolean">SQL datatypes: INT, DOUBLE, VARCHAR, BOOLEAN</a></li>
+<li><a href="#sql-datatypes-date-timestamp">SQL datatypes: DATE, TIMESTAMP</a></li>
+<li><a href="#sql-relationship-model">SQL relationship model</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="sql-select-where">SQL SELECT WHERE</h2>
+<p>The <span style="color: red;">WHERE</span> clause is used to filter records.<br>
+It is used to extract only those records that fulfill a specified condition.</p>
+<p><strong>Syntax</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column1, column2, ...
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition;
+</div></code></pre>
+<p><strong>Example</strong><br>
+Select all customers from Mexico:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> Customers
+<span class="hljs-keyword">WHERE</span> Country=<span class="hljs-string">'Mexico'</span>;
+</div></code></pre>
+<h2 id="sql-select-order-by-asc-desc">SQL SELECT ORDER BY ASC, DESC</h2>
+<p>The <span style="color: red;">ORDER BY</span> keyword is used to sort the result-set in ascending or descending order.</p>
+<p><strong>Syntax</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column1, column2, ...
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> column1, column2, ... <span class="hljs-keyword">ASC</span>|<span class="hljs-keyword">DESC</span>;
+</div></code></pre>
+<p><strong>Example</strong><br>
+Sort the products by price:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> Products
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Price;
+</div></code></pre>
+<h2 id="sql-select-group-by-having">SQL SELECT GROUP BY, HAVING</h2>
+<h3 id="group-by">GROUP BY</h3>
+<p>The <span style="color: red;">GROUP BY</span> statement groups rows that have the same values into summary rows, like &quot;find the number of customers in each country&quot;.
+The <span style="color: red;">GROUP BY</span> statement is often used with aggregate functions (<span style="color: red;">COUNT()</span>, <span style="color: red;">MAX()</span>, <span style="color: red;">MIN()</span>, <span style="color: red;">SUM()</span>, <span style="color: red;">AVG()</span>) to group the result-set by one or more columns</p>
+<p><strong>Syntax</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column_name(s)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> column_name(s)
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> column_name(s);
+</div></code></pre>
+<p><strong>Example</strong><br>
+The following SQL statement lists the number of customers in each country, sorted high to low:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(CustomerID), Country
+<span class="hljs-keyword">FROM</span> Customers
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Country
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">COUNT</span>(CustomerID) <span class="hljs-keyword">DESC</span>;
+</div></code></pre>
+<h3 id="having">HAVING</h3>
+<p>The <span style="color: red;">HAVING</span> clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.</p>
+<ul>
+<li><span style="color: red;">WHERE</span> is used to filter rows before any aggregation takes place.</li>
+<li><span style="color: red;">HAVING</span> is used to filter rows after the aggregation (i.e., after the <span style="color: red;">GROUP BY</span> operation and aggregate functions like <span style="color: red;">SUM()</span>, <span style="color: red;">COUNT()</span>, <span style="color: red;">AVG()</span>, etc.).</li>
+</ul>
+<p><strong>Syntax</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column_name(s)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> column_name(s)
+<span class="hljs-keyword">HAVING</span> condition
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> column_name(s);
+</div></code></pre>
+<p><strong>Example</strong><br>
+The following SQL statement lists the number of customers in each country. Only include countries with more than 5 customers:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(CustomerID), Country
+<span class="hljs-keyword">FROM</span> Customers
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Country
+<span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">COUNT</span>(CustomerID) &gt; <span class="hljs-number">5</span>;
+</div></code></pre>
+<h2 id="sql-select-sum-count-min-max-avg">SQL SELECT SUM, COUNT, MIN, MAX, AVG</h2>
+<h3 id="count">COUNT</h3>
+<p>The <span style="color: red;">COUNT()</span> function returns the number of rows that matches a specified criterion.</p>
+<p><strong>Syntax</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(column_name)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition;
+</div></code></pre>
+<p><strong>Example</strong><br>
+The following SQL statement finds the number of products:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(ProductID)
+<span class="hljs-keyword">FROM</span> Products;
+</div></code></pre>
+<h3 id="avg">AVG</h3>
+<p>The <span style="color: red;">AVG()</span> function returns the average value of a numeric column.</p>
+<p><strong>Syntax</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(column_name)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition;
+</div></code></pre>
+<p><strong>Example</strong><br>
+The following SQL statement finds the average price of all products:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(Price)
+<span class="hljs-keyword">FROM</span> Products;
+</div></code></pre>
+<h3 id="sum">SUM</h3>
+<p>The <span style="color: red;">SUM()</span> function returns the total sum of a numeric column.</p>
+<p><strong>Syntax</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SUM</span>(column_name)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition;
+</div></code></pre>
+<p><strong>Example</strong><br>
+The following SQL statement finds the sum of the &quot;Quantity&quot; fields in the &quot;OrderDetails&quot; table:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SUM</span>(Quantity)
+<span class="hljs-keyword">FROM</span> <span class="hljs-keyword">FROM</span> OrderDetails;
+</div></code></pre>
+<h3 id="minmax">MIN/MAX</h3>
+<p>The <span style="color: red;">MIN()</span> function returns the smallest value of the selected column.\</p>
+<p><strong>Syntax MIN</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">MIN</span>(column_name)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition;
+</div></code></pre>
+<p>The <span style="color: red;">MAX()</span> function returns the largest value of the selected column.
+<strong>Syntax MAX</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">MAX</span>(column_name)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition;
+</div></code></pre>
+<h2 id="sql-select-like-in-between">SQL SELECT LIKE, IN, BETWEEN</h2>
+<h3 id="like">LIKE</h3>
+<p>The <span style="color: red;">LIKE</style> operator is used in a WHERE clause to search for a specified pattern in a column.</p>
+<p>There are two wildcards often used in conjunction with the LIKE operator:</p>
+<ul>
+<li>The percent sign % represents zero, one, or multiple characters</li>
+<li>The underscore sign _ represents one, single character</li>
+</ul>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column1, column2, ...
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> columnN <span class="hljs-keyword">LIKE</span> pattern; 
+</div></code></pre>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * 
+<span class="hljs-keyword">FROM</span> Customers
+<span class="hljs-keyword">WHERE</span> CustomerName <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'a%'</span>; 
+</div></code></pre>
+<h3 id="in">IN</h3>
+<p>The <span style="color: red;">IN</span> operator allows you to specify multiple values in a WHERE clause.</p>
+<p>The <span style="color: red;">IN</span> operator is a shorthand for multiple OR conditions.</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column_name(s)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> column_name <span class="hljs-keyword">IN</span> (value1, value2, ...);
+</div></code></pre>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> Customers
+<span class="hljs-keyword">WHERE</span> Country <span class="hljs-keyword">IN</span> (<span class="hljs-string">'Germany'</span>, <span class="hljs-string">'France'</span>, <span class="hljs-string">'UK'</span>);
+</div></code></pre>
+<h3 id="between">BETWEEN</h3>
+<p>The <span style="color: red;">BETWEEN</span> operator selects values within a given range. The values can be numbers, text, or dates.</p>
+<p>The <span style="color: red;">BETWEEN</span> operator is inclusive: begin and end values are included.</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> column_name(s)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> column_name <span class="hljs-keyword">BETWEEN</span> value1 <span class="hljs-keyword">AND</span> value2;
+</div></code></pre>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> Products
+<span class="hljs-keyword">WHERE</span> Price <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">10</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">20</span>;
+</div></code></pre>
+<h2 id="sql-insert-into">SQL INSERT INTO</h2>
+<p>The <span style="color: red;">INSERT INTO</span> statement is used to insert new records in a table.</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> table_name (column1, column2, column3, ...)
+<span class="hljs-keyword">VALUES</span> (value1, value2, value3, ...); 
+</div></code></pre>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+<span class="hljs-keyword">VALUES</span> (<span class="hljs-string">'Cardinal'</span>, <span class="hljs-string">'Tom B. Erichsen'</span>, <span class="hljs-string">'Skagen 21'</span>, <span class="hljs-string">'Stavanger'</span>, <span class="hljs-string">'4006'</span>, <span class="hljs-string">'Norway'</span>);
+</div></code></pre>
+<h2 id="sql-update-set">SQL UPDATE SET</h2>
+<p>The <span color="color: red;">UPDATE<span> statement is used to modify the existing records in a table.</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">UPDATE</span> table_name
+<span class="hljs-keyword">SET</span> column1 = value1, column2 = value2, ...
+<span class="hljs-keyword">WHERE</span> condition; 
+</div></code></pre>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">UPDATE</span> Customers
+<span class="hljs-keyword">SET</span> ContactName = <span class="hljs-string">'Alfred Schmidt'</span>, City= <span class="hljs-string">'Frankfurt'</span>
+<span class="hljs-keyword">WHERE</span> CustomerID = <span class="hljs-number">1</span>;
+</div></code></pre>
+<h2 id="sql-delete-from">SQL DELETE FROM</h2>
+<p>The <span style="color: red;">DELETE</span> statement is used to delete existing records in a table.</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> table_name <span class="hljs-keyword">WHERE</span> condition;
+</div></code></pre>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> Customers <span class="hljs-keyword">WHERE</span> CustomerName=<span class="hljs-string">'Alfreds Futterkiste'</span>;
+</div></code></pre>
+<h2 id="sql-create-table">SQL CREATE TABLE</h2>
+<p>The <span style="color: red;">CREATE DATABASE</span> statement is used to create a new SQL database.</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> databasename; 
+</div></code></pre>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> testDB;
+</div></code></pre>
+<h2 id="sql-joins">SQL JOINs</h2>
+<p>A <span style="color: red;">JOIN</span> clause is used to combine rows from two or more tables, based on a related column between them.</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+<span class="hljs-keyword">FROM</span> Orders
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Customers <span class="hljs-keyword">ON</span> Orders.CustomerID=Customers.CustomerID;
+</div></code></pre>
+<h3 id="different-types-of-sql-joins">Different Types of SQL JOINs</h3>
+<p><span style="color: red;">(INNER) JOIN</span>: Returns records that have matching values in both tables\</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> ProductID, ProductName, CategoryName
+<span class="hljs-keyword">FROM</span> Products
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Categories <span class="hljs-keyword">ON</span> Products.CategoryID = Categories.CategoryID;
+</div></code></pre>
+<p><span style="color: red;">LEFT (OUTER) JOIN</span>: Returns all records from the left table, and the matched records from the right table\</p>
+<p><strong>Syntax Like</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> Customers.CustomerName, Orders.OrderID
+<span class="hljs-keyword">FROM</span> Customers
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Orders <span class="hljs-keyword">ON</span> Customers.CustomerID = Orders.CustomerID
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Customers.CustomerName;
+</div></code></pre>
+<p><span style="color: red;">RIGHT (OUTER) JOIN</span>: Returns all records from the right table, and the matched records from the left table<br>
+<span style="color: red;">FULL (OUTER) JOIN</span>: Returns all records when there is a match in either left or right table</p>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> testDB;
+</div></code></pre>
+<h2 id="sql-datatypes-int-double-varchar-boolean">SQL datatypes: INT, DOUBLE, VARCHAR, BOOLEAN</h2>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VARCHAR(size)</td>
+<td>A VARIABLE length string (can contain letters, numbers, and special characters). The size parameter specifies the maximum string length in characters - can be from 0 to 65535</td>
+</tr>
+<tr>
+<td>INT(size)</td>
+<td>A medium integer. Signed range is from -2147483648 to 2147483647. Unsigned range is from 0 to 4294967295. The size parameter specifies the maximum display width (which is 255)</td>
+</tr>
+<tr>
+<td>BOOLEAN/BOOL</td>
+<td>Zero is considered as false, nonzero values are considered as true.</td>
+</tr>
+<tr>
+<td>DOUBLE(size, d)</td>
+<td>A normal-size floating point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sql-datatypes-date-timestamp">SQL datatypes: DATE, TIMESTAMP</h2>
+<table>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE</td>
+<td>A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'</td>
+</tr>
+<tr>
+<td>TIMESTAMP(fsp)</td>
+<td>A timestamp. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC. Automatic initialization and updating to the current date and time can be specified using DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sql-relationship-model">SQL relationship model</h2>
+<p>TODO</p>
+
+</body>
+</html>

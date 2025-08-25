@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Java.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="../template.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="java">Java</h1>
+<ul>
+<li><a href="#java">Java</a>
+<ul>
+<li><a href="#1-programmiersprachen">1. Programmiersprachen</a>
+<ul>
+<li><a href="#11-compiler-vs-interpreter">1.1 Compiler vs. Interpreter</a></li>
+<li><a href="#12-besonderheiten-und-vorteile-von-java">1.2 Besonderheiten und Vorteile von Java</a></li>
+</ul>
+</li>
+<li><a href="#2-java-grundlagen">2. Java Grundlagen</a>
+<ul>
+<li><a href="#21-hello-world">2.1 Hello World</a></li>
+<li><a href="#22-kompilieren-und-ausf%C3%BChren">2.2 Kompilieren und Ausführen</a>
+<ul>
+<li><a href="#221-kompilieren-von-programmen">2.2.1 Kompilieren von Programmen</a></li>
+<li><a href="#222-ausf%C3%BChren-von-programmen">2.2.2 Ausführen von Programmen</a></li>
+</ul>
+</li>
+<li><a href="#23-variablen-und-datentypen">2.3 Variablen und Datentypen</a>
+<ul>
+<li><a href="#231-operatoren">2.3.1 Operatoren</a></li>
+</ul>
+</li>
+<li><a href="#24-zahlendarstellung-in-java">2.4 Zahlendarstellung in Java</a>
+<ul>
+<li><a href="#241-datentypen-f%C3%BCr-ganze-zahlen">2.4.1 Datentypen für ganze Zahlen</a></li>
+<li><a href="#242-datentypen-f%C3%BCr-dezimalzahlen">2.4.2 Datentypen für Dezimalzahlen</a></li>
+</ul>
+</li>
+<li><a href="#25-ein--und-ausgabe">2.5 Ein- und Ausgabe</a></li>
+<li><a href="#26-strings">2.6 Strings</a></li>
+<li><a href="#27-verzweigungen">2.7 Verzweigungen</a></li>
+<li><a href="#28-schleifen">2.8 Schleifen</a></li>
+</ul>
+</li>
+<li><a href="#3-arrays-und-listen">3. Arrays und Listen</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-programmiersprachen">1. Programmiersprachen</h2>
+<p>Programme werden in <strong>Hochsprachen</strong> wie Java, Python oder C++ geschrieben. Diese Sprachen sind für Menschen gut lesbar und verständlich. Der Quelltext, also das in Textform geschriebene Programm, kann jedoch nicht direkt von der Computer-Hardware ausgeführt werden.</p>
+<p>Computer verstehen ausschließlich <strong>Maschinensprache</strong>, eine sehr hardwarenahe Sprache. Daher muss der Quelltext einer Hochsprache in die für das jeweilige Betriebssystem (z.B. Windows oder Linux) verständliche Maschinensprache übersetzt werden.</p>
+<h3 id="11-compiler-vs-interpreter">1.1 Compiler vs. Interpreter</h3>
+<p>Für diese Übersetzung gibt es zwei Arten von Programmen:</p>
+<ul>
+<li><strong>Compiler</strong>: Ein Compiler übersetzt den gesamten Quelltext vor der Ausführung des Programms in Maschinensprache. Das Ergebnis ist eine direkt ausführbare Datei.</li>
+<li><strong>Interpreter</strong>: Ein Interpreter übersetzt den Quelltext Zeile für Zeile während das Programm läuft.</li>
+</ul>
+<p>Zusammenfassend lässt sich sagen, dass Compiler und Interpreter als &quot;Übersetzer&quot; fungieren, die die Brücke zwischen der vom Menschen geschriebenen Hochsprache und der von der Maschine verstandenen Maschinensprache schlagen.</p>
+<h3 id="12-besonderheiten-und-vorteile-von-java">1.2 Besonderheiten und Vorteile von Java</h3>
+<p>Java verfolgt einen besonderen Ansatz bei der Übersetzung von Quelltext. Im Gegensatz zu vielen anderen Sprachen übersetzt der <strong>Java-Compiler</strong> den Code nicht direkt in Maschinensprache, sondern in einen Zwischencode, den sogenannten <strong>Bytecode</strong>. Diese kompilierten Java-Dateien erkennen Sie an der Endung <code>.class.</code></p>
+<p>Der entscheidende Vorteil von Bytecode ist seine <strong>Plattformunabhängigkeit</strong>. Das bedeutet, er ist auf jedem Betriebssystem identisch. Allerdings kann er nicht direkt von der CPU des Computers ausgeführt werden.</p>
+<p>An dieser Stelle kommt die <strong>Java Virtual Machine (JVM)</strong> ins Spiel. Die JVM ist eine spezielle Laufzeitumgebung, die als &quot;virtueller Computer&quot; fungiert und für verschiedene Betriebssysteme (wie Windows, Linux oder macOS) verfügbar ist. Sie nimmt den plattformunabhängigen Bytecode entgegen und interpretiert ihn, also übersetzt ihn in die spezifische Maschinensprache, die der lokale Computer versteht. Dieser zweistufige Prozess macht Java-Anwendungen extrem portabel: Einmal kompiliert, können sie auf jedem System laufen, auf dem eine JVM installiert ist.</p>
+<h2 id="2-java-grundlagen">2. Java Grundlagen</h2>
+<h3 id="21-hello-world">2.1 Hello World</h3>
+<p>Beispiel Programm Java Hello World.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//HelloWorld.java</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>{
+        System.out.println(<span class="hljs-string">"Hello World"</span>);
+    }
+}
+</div></code></pre>
+<h3 id="22-kompilieren-und-ausf%C3%BChren">2.2 Kompilieren und Ausführen</h3>
+<h4 id="221-kompilieren-von-programmen">2.2.1 Kompilieren von Programmen</h4>
+<p>Um das Programm zu kompilieren kann über die Konsole foglender Befehl ausgeführt werden.</p>
+<pre class="hljs"><code><div>javac HelloWorld.java
+</div></code></pre>
+<h4 id="222-ausf%C3%BChren-von-programmen">2.2.2 Ausführen von Programmen</h4>
+<p>Um das Programm auszuführen, kann über die Konsole folgender Befehl ausgeführt werden.</p>
+<pre class="hljs"><code><div>java HelloWorld
+</div></code></pre>
+<h3 id="23-variablen-und-datentypen">2.3 Variablen und Datentypen</h3>
+<p>Variablen sind ein grundlegender Teil der Programmierung. Man kann sie sich als Container oder benannte Speicherplätze vorstellen, in denen Daten während der Laufzeit eines Programms abgelegt werden. Jede Variable hat einen <strong>Datentyp</strong>, der festlegt, welche Art von Daten sie speichern kann, und einen eindeutigen <strong>Namen</strong>.</p>
+<p>Die wichtigsten primitiven Datentypen in Java sind:</p>
+<ul>
+<li><strong>int</strong>: Für ganze Zahlen (z.B. 10, -42, 1500).</li>
+<li><strong>double</strong>: Für Kommazahlen (z.B. 3.14, -2.5).</li>
+<li><strong>boolean</strong>: Für Wahrheitswerte, kann nur true oder false sein.</li>
+<li><strong>char</strong>: Für einzelne Zeichen, in einfachen Anführungszeichen (z.B. 'A', '!').</li>
+<li><strong>String</strong>: (technisch gesehen kein primitiver Typ, aber genauso fundamental) Für Zeichenketten, in doppelten Anführungszeichen (z.B. &quot;Hallo&quot;).</li>
+</ul>
+<p>Beispiel für die Deklaration und Initialisierung von Variablen:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VariablenBeispiel</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        String name = <span class="hljs-string">"Ada Lovelace"</span>; <span class="hljs-comment">// Eine Variable vom Typ String</span>
+        <span class="hljs-keyword">int</span> alter = <span class="hljs-number">36</span>;              <span class="hljs-comment">// Eine Variable vom Typ int</span>
+        <span class="hljs-keyword">double</span> pi = <span class="hljs-number">3.14159</span>;         <span class="hljs-comment">// Eine Variable vom Typ double</span>
+        <span class="hljs-keyword">boolean</span> istProgrammiererin = <span class="hljs-keyword">true</span>; <span class="hljs-comment">// Eine Variable vom Typ boolean</span>
+    }
+}
+</div></code></pre>
+<h4 id="231-operatoren">2.3.1 Operatoren</h4>
+<p>Operatoren sind spezielle Symbole, die eine oder mehrere Aktionen oder Prozesse ausführen. Sie werden verwendet, um Variablen und Werte zu manipulieren.</p>
+<p><strong>Arithmetische Operatoren</strong>:<br>
+Werden für mathematische Berechnungen verwendet.</p>
+<ul>
+<li><code>+</code> (Addition)</li>
+<li><code>-</code> (Subtraktion)</li>
+<li><code>*</code> (Multiplikation)</li>
+<li><code>/</code> (Division)</li>
+<li><code>%</code> (Modulo, gibt den Rest einer Division zurück)</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">int</span> b = <span class="hljs-number">3</span>;
+System.out.println(a + b); <span class="hljs-comment">// 13</span>
+System.out.println(a % b); <span class="hljs-comment">// 1</span>
+</div></code></pre>
+<p><strong>Zuweisungsoperatoren</strong>:<br>
+Weisen einer Variable einen Wert zu.</p>
+<ul>
+<li><code>=</code> (Einfache Zuweisung)</li>
+<li><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code> (Kombinierte Zuweisung)</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> x = <span class="hljs-number">10</span>;
+x += <span class="hljs-number">5</span>; <span class="hljs-comment">// entspricht x = x + 5; -&gt; x ist jetzt 15</span>
+</div></code></pre>
+<p><strong>Vergleichsoperatoren</strong>:<br>
+Vergleichen zwei Werte und geben einen boolean-Wert (true oder false) zurück.</p>
+<ul>
+<li><code>==</code> (Gleich)</li>
+<li><code>!=</code> (Ungleich)</li>
+<li><code>&gt;</code> (Größer als)</li>
+<li><code>&lt;</code> (Kleiner als)</li>
+<li><code>&gt;=</code> (Größer oder gleich)</li>
+<li><code>&lt;=</code> (Kleiner oder gleich)</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> alter = <span class="hljs-number">18</span>;
+<span class="hljs-keyword">boolean</span> istVolljaehrig = alter &gt;= <span class="hljs-number">18</span>; <span class="hljs-comment">// true</span>
+</div></code></pre>
+<p><strong>Logische Operatoren</strong>:<br>
+Werden verwendet, um boolean-Werte zu verknüpfen.</p>
+<ul>
+<li><code>&amp;&amp;</code> (Logisches UND: true, wenn beide Ausdrücke true sind)</li>
+<li><code>||</code> (Logisches ODER: true, wenn mindestens ein Ausdruck true ist)</li>
+<li><code>!</code> (Logisches NICHT: Kehrt den boolean-Wert um)</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">boolean</span> hatFuehrerschein = <span class="hljs-keyword">true</span>;
+<span class="hljs-keyword">boolean</span> hatAuto = <span class="hljs-keyword">false</span>;
+<span class="hljs-keyword">boolean</span> darfFahren = hatFuehrerschein &amp;&amp; hatAuto; <span class="hljs-comment">// false</span>
+</div></code></pre>
+<p><strong>Inkrement- und Dekrement-Operatoren</strong>:<br>
+Erhöhen oder verringern den Wert einer Variable um eins.</p>
+<ul>
+<li><code>++</code> (Inkrement)</li>
+<li><code>--</code> (Dekrement)</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> anzahl = <span class="hljs-number">5</span>;
+anzahl++; <span class="hljs-comment">// anzahl ist jetzt 6</span>
+</div></code></pre>
+<h3 id="24-zahlendarstellung-in-java">2.4 Zahlendarstellung in Java</h3>
+<h4 id="241-datentypen-f%C3%BCr-ganze-zahlen">2.4.1 Datentypen für ganze Zahlen</h4>
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Größe im Speicher</th>
+<th>Wertebereich</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>byte</code></td>
+<td>1 Byte</td>
+<td>-128 bis +127</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>2 Bytes</td>
+<td>-32.768 bis +32.767</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>4 Bytes</td>
+<td>-2.147.483.648  bis +2.147.483.647</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>8 Bytes</td>
+<td>-9.223.372.036.854.775.808 bis +9.223.372.036.854.775.807</td>
+</tr>
+<tr>
+<td><code>BigInteger</code></td>
+<td>mind. 24 Bytes</td>
+<td>Beliebig groß</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kodierung negativer Zahlen – Zweierkomplement</strong></p>
+<p>Negative Zahlen werden in der <strong>Zweierkomplementdarstellung</strong> gespeichert. So wird die Zahl -23 mit einem Byte gespeichert:</p>
+<ol>
+<li><strong>Positive Zahl binär aufschreiben</strong>: +23 entspricht 0001 0111.</li>
+<li><strong>Binäre Zahl invertieren</strong>: Jedes Bit wird umgedreht zu 1110 1000.</li>
+<li><strong>Eins hinzuaddieren</strong>: 1110 1000 + 0000 0001 = 1110 1001.</li>
+<li>Der Wert 1110 1001 entspricht nun der -23 im Zweierkomplement.</li>
+</ol>
+<p>Teste folgenden Code, um einen Überlauf zu sehen:</p>
+<pre class="hljs"><code><div>System.out.println((<span class="hljs-keyword">byte</span>)(<span class="hljs-number">127</span> + <span class="hljs-number">1</span>)); <span class="hljs-comment">// Ausgabe: -128</span>
+</div></code></pre>
+<h4 id="242-datentypen-f%C3%BCr-dezimalzahlen">2.4.2 Datentypen für Dezimalzahlen</h4>
+<p>Man unterscheidet zwischen Gleitkommazahlen und Festkommazahlen.</p>
+<p><strong>Gleitkommazahlen</strong><br>
+Hier ist die Anzahl der Vor- und Nachkommastellen variabel. Das Komma &quot;gleitet&quot;, was bei sehr großen Zahlen zu Ungenauigkeiten führen kann.</p>
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Größe im Speicher</th>
+<th>Wertebereich</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td>4 Bytes</td>
+<td>-3,4 * 10³⁸ bis +3,4 * 10³⁸</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>8 Bytes</td>
+<td>-1,7 * 10³⁰⁸ bis +1,7 * 10³⁰⁸</td>
+</tr>
+</tbody>
+</table>
+<p>Gleitkommazahlen bestehen aus einem Vorzeichenbit, einer Mantisse (Ziffern) und einem Exponenten (Kommaverschiebung). Wegen möglicher Rundungsfehler sollten sie <strong>nicht für Geldbeträge</strong> verwendet werden.</p>
+<p>Teste folgenden Code, um die Ungenauigkeit zu sehen:</p>
+<pre class="hljs"><code><div>System.out.println(<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span>); <span class="hljs-comment">// Ausgabe: 0.30000000000000004</span>
+</div></code></pre>
+<p><strong>Festkommazahlen</strong><br>
+Hier ist die Position des Kommas fest, was sie sehr präzise macht. Java bietet dafür den Datentyp <code>BigDecimal</code>. Er kann beliebig große Zahlen mit beliebiger Genauigkeit darstellen, bis der Hauptspeicher voll ist. Dies ist die zwingend empfohlene Wahl für Finanzberechnungen.</p>
+<h3 id="25-ein--und-ausgabe">2.5 Ein- und Ausgabe</h3>
+<p>Um Werte von Variablen oder einfachen Text auf dem Bildschirm (in der Konsole) auszugeben, wird der Befehl <code>System.out.println()</code> verwendet. Der Inhalt, der in den Klammern steht, wird ausgegeben, gefolgt von einem Zeilenumbruch.
+Man kann festen Text (in Anführungszeichen) und Variablen miteinander kombinieren, indem man sie mit einem <code>+</code>-Zeichen verbindet.</p>
+<p>Beispiel für die Ausgabe von Variablen:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AusgabeBeispiel</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        String name = <span class="hljs-string">"Ada Lovelace"</span>;
+        <span class="hljs-keyword">int</span> alter = <span class="hljs-number">36</span>;
+        
+        <span class="hljs-comment">// Ausgabe von reinem Text</span>
+        System.out.println(<span class="hljs-string">"Informationen zur Person:"</span>);
+        
+        <span class="hljs-comment">// Ausgabe des Werts der Variable 'name'</span>
+        System.out.println(name); 
+        
+        <span class="hljs-comment">// Kombination von Text und Variablen</span>
+        System.out.println(<span class="hljs-string">"Name: "</span> + name);
+        System.out.println(<span class="hljs-string">"Alter: "</span> + alter);
+        System.out.println(name + <span class="hljs-string">" war "</span> + alter + <span class="hljs-string">" Jahre alt."</span>);
+    }
+}
+</div></code></pre>
+<p>Konsolenausgabe dieses Programms:</p>
+<pre class="hljs"><code><div>Informationen zur Person:
+Ada Lovelace
+Name: Ada Lovelace
+Alter: 36
+Ada Lovelace war 36 Jahre alt.
+</div></code></pre>
+<h3 id="26-strings">2.6 Strings</h3>
+<p>Ein <code>String</code> in Java ist kein primitiver Datentyp, sondern ein Objekt, das eine Zeichenkette (eine Sequenz von Zeichen) darstellt. Strings werden in doppelten Anführungszeichen &quot; geschrieben.</p>
+<p><strong>Deklaration und Initialisierung</strong>:</p>
+<pre class="hljs"><code><div>String gruss = <span class="hljs-string">"Hallo Welt!"</span>;
+String name = <span class="hljs-string">"Ada"</span>;
+</div></code></pre>
+<p><strong>String-Verkettung (Konkatenation)</strong>:<br>
+Strings können mit dem <code>+</code> Operator verbunden werden.</p>
+<pre class="hljs"><code><div>String satz = gruss + <span class="hljs-string">" Ich bin "</span> + name + <span class="hljs-string">"."</span>;
+System.out.println(satz); <span class="hljs-comment">// Ausgabe: Hallo Welt! Ich bin Ada.</span>
+</div></code></pre>
+<p><strong>Wichtige String-Methoden</strong>:<br>
+Da Strings Objekte sind, stellen sie nützliche Methoden (Funktionen) zur Verfügung.</p>
+<ul>
+<li><code>length()</code>: Gibt die Anzahl der Zeichen im String zurück.</li>
+<li><code>toUpperCase()</code>: Wandelt alle Zeichen in Großbuchstaben um.</li>
+<li><code>toLowerCase()</code>: Wandelt alle Zeichen in Kleinbuchstaben um.</li>
+<li><code>charAt(index)</code>: Gibt das Zeichen an einer bestimmten Position zurück (Zählung beginnt bei 0).</li>
+<li><code>equals(anotherString)</code>: Vergleicht zwei Strings auf inhaltliche Gleichheit. Wichtig: Verwenden Sie equals() und nicht == zum Vergleichen von String-Inhalten!</li>
+</ul>
+<p><strong>Beispiel für Methoden</strong>:</p>
+<pre class="hljs"><code><div>String text = <span class="hljs-string">"Java ist super"</span>;
+
+<span class="hljs-keyword">int</span> laenge = text.length(); <span class="hljs-comment">// 14</span>
+String gross = text.toUpperCase(); <span class="hljs-comment">// "JAVA IST SUPER"</span>
+<span class="hljs-keyword">char</span> zeichen = text.charAt(<span class="hljs-number">0</span>); <span class="hljs-comment">// 'J'</span>
+<span class="hljs-keyword">boolean</span> istGleich = text.equals(<span class="hljs-string">"java ist super"</span>); <span class="hljs-comment">// false (Groß/Kleinschreibung)</span>
+
+System.out.println(<span class="hljs-string">"Länge: "</span> + laenge);
+System.out.println(<span class="hljs-string">"Großbuchstaben: "</span> + gross);
+System.out.println(<span class="hljs-string">"Erstes Zeichen: "</span> + zeichen);
+System.out.println(<span class="hljs-string">"Ist gleich? "</span> + istGleich);
+</div></code></pre>
+<h3 id="27-verzweigungen">2.7 Verzweigungen</h3>
+<p>Verzweigungen, auch Kontrollstrukturen genannt, ermöglichen es einem Programm, Entscheidungen zu treffen und unterschiedliche Code-Blöcke auszuführen, je nachdem, ob eine bestimmte Bedingung erfüllt ist oder nicht.</p>
+<p><code>if-else</code><strong>-Anweisung</strong><br>
+Die <code>if-else</code>-Anweisung ist die grundlegendste Form der Verzweigung.</p>
+<ul>
+<li>Der <code>if</code>-Block wird ausgeführt, wenn die Bedingung in den runden Klammern <code>true</code> (wahr) ist.</li>
+<li>Optional kann ein <code>else</code>-Block angehängt werden, der ausgeführt wird, wenn die Bedingung <code>false</code> (falsch) ist.</li>
+<li>Mit <code>else if</code> können weitere Bedingungen geprüft werden.</li>
+</ul>
+<p><strong>Syntax</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (bedingung) {
+    <span class="hljs-comment">// Code, der ausgeführt wird, wenn die Bedingung wahr ist</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (andere_bedingung) {
+    <span class="hljs-comment">// Code, der ausgeführt wird, wenn die erste Bedingung falsch,</span>
+    <span class="hljs-comment">// aber die andere_bedingung wahr ist</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// Code, der ausgeführt wird, wenn alle vorherigen Bedingungen falsch sind</span>
+}
+</div></code></pre>
+<p><strong>Beispiel</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> alter = <span class="hljs-number">20</span>;
+
+<span class="hljs-keyword">if</span> (alter &gt;= <span class="hljs-number">18</span>) {
+    System.out.println(<span class="hljs-string">"Die Person ist volljährig."</span>);
+} <span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">"Die Person ist minderjährig."</span>);
+}
+</div></code></pre>
+<p><code>switch</code><strong>-Anweisung</strong><br>
+Die <code>switch</code>-Anweisung ist nützlich, wenn eine einzelne Variable mit mehreren möglichen Werten verglichen werden soll. Sie ist oft lesbarer als eine lange Kette von <code>if-else if</code>-Anweisungen.</p>
+<ul>
+<li>Der Wert der Variable in den <code>switch</code>-Klammern wird mit den <code>case</code>-Werten verglichen.</li>
+<li><code>break</code>; ist wichtig, um aus dem <code>switch</code>-Block auszuspringen, sobald ein passender Fall gefunden wurde. Ohne <code>break</code> würden auch alle nachfolgenden <code>case</code>-Blöcke ausgeführt werden (&quot;fall-through&quot;).</li>
+<li>Der <code>default</code>-Block ist optional und wird ausgeführt, wenn keiner der <code>case</code>-Werte zutrifft.</li>
+</ul>
+<p><strong>Beispiel</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> wochentag = <span class="hljs-number">3</span>;
+String tag;
+
+<span class="hljs-keyword">switch</span> (wochentag) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        tag = <span class="hljs-string">"Montag"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        tag = <span class="hljs-string">"Dienstag"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+        tag = <span class="hljs-string">"Mittwoch"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+        tag = <span class="hljs-string">"Donnerstag"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+        tag = <span class="hljs-string">"Freitag"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        tag = <span class="hljs-string">"Wochenende"</span>;
+        <span class="hljs-keyword">break</span>;
+}
+System.out.println(<span class="hljs-string">"Heute ist "</span> + tag); <span class="hljs-comment">// Ausgabe: Heute ist Mittwoch</span>
+</div></code></pre>
+<h3 id="28-schleifen">2.8 Schleifen</h3>
+<p>Schleifen werden verwendet, um einen Code-Block mehrfach zu wiederholen, solange eine bestimmte Bedingung erfüllt ist.</p>
+<p><code>while</code><strong>-Schleife</strong><br>
+Die <code>while</code>-Schleife ist eine kopfgesteuerte Schleife. Das bedeutet, die Bedingung wird vor jeder Ausführung des Schleifenkörpers geprüft. Ist die Bedingung von Anfang an <code>false</code>, wird der Code-Block gar nicht erst ausgeführt.</p>
+<p><strong>Beispiel</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">while</span> (i &lt;= <span class="hljs-number">5</span>) {
+    System.out.println(<span class="hljs-string">"Durchlauf Nummer "</span> + i);
+    i++; <span class="hljs-comment">// Wichtig: Zählervariable verändern, um eine Endlosschleife zu vermeiden!</span>
+}
+<span class="hljs-comment">// Ausgabe:</span>
+<span class="hljs-comment">// Durchlauf Nummer 1</span>
+<span class="hljs-comment">// Durchlauf Nummer 2</span>
+<span class="hljs-comment">// Durchlauf Nummer 3</span>
+<span class="hljs-comment">// Durchlauf Nummer 4</span>
+<span class="hljs-comment">// Durchlauf Nummer 5</span>
+</div></code></pre>
+<p><code>do-while</code><strong>-Schleife</strong><br>
+Die <code>do-while</code>-Schleife ist eine fußgesteuerte Schleife. Der Schleifenkörper wird mindestens einmal ausgeführt, da die Bedingung erst nach dem ersten Durchlauf geprüft wird.</p>
+<p><strong>Beispiel</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> i = <span class="hljs-number">6</span>;
+<span class="hljs-keyword">do</span> {
+    System.out.println(<span class="hljs-string">"Dieser Text wird mindestens einmal ausgegeben."</span>);
+    System.out.println(<span class="hljs-string">"i ist jetzt: "</span> + i);
+    i++;
+} <span class="hljs-keyword">while</span> (i &lt;= <span class="hljs-number">5</span>);
+<span class="hljs-comment">// Ausgabe:</span>
+<span class="hljs-comment">// Dieser Text wird mindestens einmal ausgegeben.</span>
+<span class="hljs-comment">// i ist jetzt: 6</span>
+</div></code></pre>
+<p><code>for</code><strong>-Schleife</strong><br>
+Die <code>for</code>-Schleife ist ideal, wenn die Anzahl der Wiederholungen im Voraus bekannt ist. Sie kombiniert Initialisierung, Bedingung und Inkrementierung/Dekrementierung in einer Zeile.</p>
+<p><strong>Syntax</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (Initialisierung; Bedingung; Inkrement/Dekrement) { ... }
+</div></code></pre>
+<p><strong>Beispiel</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++) {
+    System.out.println(<span class="hljs-string">"For-Schleifen Durchlauf: "</span> + i);
+}
+<span class="hljs-comment">// Ausgabe ist identisch zur while-Schleife oben.</span>
+</div></code></pre>
+<h2 id="3-arrays-und-listen">3. Arrays und Listen</h2>
+
+</body>
+</html>
