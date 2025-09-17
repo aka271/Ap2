@@ -21,6 +21,15 @@
   - [3. Arrays und Listen](#3-arrays-und-listen)
     - [3.1 Arrays](#31-arrays)
     - [3.2 ArrayList](#32-arraylist)
+  - [4. Methoden](#4-methoden)
+    - [4.1 Rekursion](#41-rekursion)
+  - [5. Objekt Orientierte Programmierung](#5-objekt-orientierte-programmierung)
+    - [5.1 Beispiel](#51-beispiel)
+    - [5.2 Objekte erzeugen und verwenden](#52-objekte-erzeugen-und-verwenden)
+      - [5.2.1 Objekt erzeugen](#521-objekt-erzeugen)
+    - [5.2.2 Objekte verwenden](#522-objekte-verwenden)
+  - [5.3 Set- und Get-Methoden](#53-set--und-get-methoden)
+  - [5.4 Konstruktoren](#54-konstruktoren)
 
 
 ## 1. Programmiersprachen
@@ -460,4 +469,167 @@ namen.remove(0); // Entfernt "Ada"
 System.out.println("Anzahl der Namen in der Liste: " + namen.size()); // Ausgabe: 2
 ```
 
-<a href="/" class="button-clean">Go to Home</a>
+## 4. Methoden
+Methoden sind wiederverwendbare Code-Blöcke, die eine bestimmte Aufgabe erledigen. Sie helfen, Code zu strukturieren und Wiederholungen zu vermeiden. Man kann sie sich als "Unterprogramme" vorstellen.
+
+Aufbau einer Methode:
+```java
+rückgabetyp methodenName(datentyp1 parameter1, datentyp2 parameter2) {
+    // Anweisungen im Methoden-Körper
+    return wert; // Nur nötig, wenn der Rückgabetyp nicht 'void' ist
+}
+```
+
+- `rückgabetyp`: Der Datentyp des Wertes, den die Methode zurückgibt (z.B. `int`, `String`). Wenn nichts zurückgegeben wird, verwendet man `void`.
+- `methodenName`: Ein aussagekräftiger Name (nach Konvention in camelCase).
+- `parameter`: Eingabewerte, die die Methode für ihre Arbeit benötigt. Eine Methode kann keine, einen oder mehrere Parameter haben.
+- `return`: Das Schlüsselwort, um einen Wert aus der Methode zurückzugeben.
+
+**1. Methode ohne Parameter und ohne Rückgabewert**:
+```java
+// Definition der Methode
+public void begruessung() {
+    System.out.println("Hallo aus der Methode!");
+}
+
+// Aufruf der Methode
+begruessung();
+```
+
+**2. Methode mit Parametern und ohne Rückgabewert**:
+```java
+// Definition
+public void zeigeSumme(int a, int b) {
+    System.out.println("Die Summe ist: " + (a + b));
+}
+
+// Aufruf
+zeigeSumme(5, 3); // Ausgabe: Die Summe ist: 8
+```
+
+**3. Methode mit Parametern und mit Rückgabewert**:
+```java
+// Definition
+public int multipliziere(int a, int b) {
+    int ergebnis = a * b;
+    return ergebnis;
+}
+
+// Aufruf und Speichern des Rückgabewerts in einer Variable
+int produkt = multipliziere(7, 4);
+System.out.println(produkt); // Ausgabe: 28
+```
+
+### 4.1 Rekursion
+Rekursion ist eine Technik, bei der eine Methode sich selbst aufruft, um ein Problem zu lösen. Anstatt eine Schleife zu verwenden, wird das Problem in kleinere, gleichartige Teilprobleme zerlegt, bis ein einfacher, direkt lösbarer Fall erreicht ist.
+
+**Wichtige Bestandteile einer rekursiven Methode**:
+1. **Rekursiver Aufruf**: Der Aufruf der Methode in sich selbst, typischerweise mit einem veränderten (meist kleineren) Parameter.
+2. **Abbruchbedingung (Base Case)**: Eine `if`-Bedingung, die den direkt lösbaren Fall prüft und die Rekursion beendet. Ohne eine Abbruchbedingung würde die Methode sich unendlich oft selbst aufrufen, was zu einem `StackOverflowError` führt.
+
+**Beispiel: Berechnung der Fakultät**
+
+Die Fakultät einer Zahl `n` (geschrieben als `n!`) ist das Produkt aller ganzen Zahlen von 1 bis `n`.
+
+- Mathematische Definition: `n! = n * (n-1) * (n-2) * ... * 1`
+- Rekursive Definition: `n! = n * (n-1)!`
+- Abbruchbedingung: `0! = 1`
+
+```java
+public class RekursionBeispiel {
+
+    // Rekursive Methode zur Berechnung der Fakultät
+    public static int fakultaet(int n) {
+        // 1. Abbruchbedingung (Base Case)
+        if (n == 0) {
+            return 1;
+        }
+        // 2. Rekursiver Aufruf
+        else {
+            return n * fakultaet(n - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        int zahl = 5;
+        int ergebnis = fakultaet(zahl);
+        // Aufrufkette:
+        // fakultaet(5) -> 5 * fakultaet(4)
+        // fakultaet(4) -> 4 * fakultaet(3)
+        // fakultaet(3) -> 3 * fakultaet(2)
+        // fakultaet(2) -> 2 * fakultaet(1)
+        // fakultaet(1) -> 1 * fakultaet(0)
+        // fakultaet(0) -> gibt 1 zurück
+
+        System.out.println("Die Fakultät von " + zahl + " ist " + ergebnis); // Ausgabe: Die Fakultät von 5 ist 120
+    }
+}
+```
+
+## 5. Objekt Orientierte Programmierung
+Die **Objektorientierte Programmierung (OOP)** ist ein Programmierparadigma, das auf dem Konzept von "Objekten" basiert. Diese Objekte sind Instanzen von "Klassen" und kombinieren Daten (Attribute) mit den Funktionen (Methoden), die auf diesen Daten operieren. Ziel der OOP ist es, die Entwicklung großer und komplexer Software zu vereinfachen, indem Probleme in kleinere, besser handhabbare Einheiten zerlegt werden.
+
+### 5.1 Beispiel
+Datei `Person.java`
+```java
+// Bauplan für Personen (Objekte vom Typ Person)
+public class Person {
+    public String name;
+    public int age;
+
+    public void birthday() {
+        age++;
+    }
+}
+```
+
+Datei `Test.java`
+```java
+// Programm um Personen zu erzeugen, Eigenschaften zuzuweisen und
+// auszugeben
+public class Test {
+    public static void main(String[] args) {
+        // Objekte sind Variablen und müssen definiert werden
+        Person p1; // Variable p1 vom Typ Person
+        p1 = new Person(); // Objekterzeugung mit dem Schlüsselwort new
+        p1.name = "Michael"; // Zugriff auf Eigenschaften mit dem
+        
+        // Punktoperator
+        p1.age = 21;
+        p1.birthday();
+        Person p2 = new Person();
+        p2.name = "Eva";
+        p2.age = 19;
+        p2.birthday();
+        
+        // Ausgabe der Eigenschaftswerte der beiden Objekte
+        System.out.println("Name: " + p1.name + " Alter: " + p1.age);
+        System.out.println("Name: " + p2.name + " Alter: " + p2.age);
+    }
+}
+```
+
+### 5.2 Objekte erzeugen und verwenden
+#### 5.2.1 Objekt erzeugen
+Die erzeugung des Objekts besteht typischerweise aus zwei Schritten:
+1. Variablendefinition: `Person p1;`
+2. Objekterzeugung: `p1 = new Person();`
+
+### 5.2.2 Objekte verwenden
+Zugriff auf Eigenschaften eines Objekts geschiet mittels **Punktoperator**
+- Zuweisung: `p1.name = "Michael";`
+- Zugriff: `String output = p1.name;`
+
+
+## 5.3 Set- und Get-Methoden
+Eine 
+
+## 5.4 Konstruktoren
+
+
+
+
+
+
+
+<a href="/" class="button-clean">Back to Dashboard</a>

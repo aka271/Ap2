@@ -583,4 +583,4 @@ Damit die Daten eines Eingabefeldes korrekt übermittelt werden, muss jedes Eing
 >     <button type="submit">Anmelden</button>
 > </form>
 
-<a href="/" class="button-clean">Go to Home</a>
+<a href="/" class="button-clean">Back to Dashboard</a>

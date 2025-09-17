@@ -185,4 +185,4 @@ farbWechslerButton.addEventListener('click', function() {
 ```
 
 
-<a href="/" class="button-clean">Go to Home</a>
+<a href="/" class="button-clean">Back to Dashboard</a>

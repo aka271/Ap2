@@ -718,4 +718,4 @@ Definiert die Standardgröße eines Elements, bevor der restliche Platz verteilt
 ```
 
 
-<a href="/" class="button-clean">Go to Home</a>
+<a href="/" class="button-clean">Back to Dashboard</a>

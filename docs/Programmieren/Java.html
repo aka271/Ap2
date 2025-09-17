@@ -5,6 +5,228 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
 /* Tomorrow Theme */
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
@@ -79,6 +301,58 @@
 	font-weight: bold;
 }
 </style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
 <link rel="stylesheet" href="../template.css" type="text/css">
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
@@ -133,6 +407,24 @@
 <li><a href="#32-arraylist">3.2 ArrayList</a></li>
 </ul>
 </li>
+<li><a href="#4-methoden">4. Methoden</a>
+<ul>
+<li><a href="#41-rekursion">4.1 Rekursion</a></li>
+</ul>
+</li>
+<li><a href="#5-objekt-orientierte-programmierung">5. Objekt Orientierte Programmierung</a>
+<ul>
+<li><a href="#51-beispiel">5.1 Beispiel</a></li>
+<li><a href="#52-objekte-erzeugen-und-verwenden">5.2 Objekte erzeugen und verwenden</a>
+<ul>
+<li><a href="#521-objekt-erzeugen">5.2.1 Objekt erzeugen</a></li>
+</ul>
+</li>
+<li><a href="#522-objekte-verwenden">5.2.2 Objekte verwenden</a></li>
+</ul>
+</li>
+<li><a href="#53-set--und-get-methoden">5.3 Set- und Get-Methoden</a></li>
+<li><a href="#54-konstruktoren">5.4 Konstruktoren</a></li>
 </ul>
 </li>
 </ul>
@@ -541,6 +833,147 @@ namen.remove(<span class="hljs-number">0</span>); <span class="hljs-comment">// 
 <span class="hljs-comment">// Die aktuelle Größe abfragen</span>
 System.out.println(<span class="hljs-string">"Anzahl der Namen in der Liste: "</span> + namen.size()); <span class="hljs-comment">// Ausgabe: 2</span>
 </div></code></pre>
+<h2 id="4-methoden">4. Methoden</h2>
+<p>Methoden sind wiederverwendbare Code-Blöcke, die eine bestimmte Aufgabe erledigen. Sie helfen, Code zu strukturieren und Wiederholungen zu vermeiden. Man kann sie sich als &quot;Unterprogramme&quot; vorstellen.</p>
+<p>Aufbau einer Methode:</p>
+<pre class="hljs"><code><div><span class="hljs-function">rückgabetyp <span class="hljs-title">methodenName</span><span class="hljs-params">(datentyp1 parameter1, datentyp2 parameter2)</span> </span>{
+    <span class="hljs-comment">// Anweisungen im Methoden-Körper</span>
+    <span class="hljs-keyword">return</span> wert; <span class="hljs-comment">// Nur nötig, wenn der Rückgabetyp nicht 'void' ist</span>
+}
+</div></code></pre>
+<ul>
+<li><code>rückgabetyp</code>: Der Datentyp des Wertes, den die Methode zurückgibt (z.B. <code>int</code>, <code>String</code>). Wenn nichts zurückgegeben wird, verwendet man <code>void</code>.</li>
+<li><code>methodenName</code>: Ein aussagekräftiger Name (nach Konvention in camelCase).</li>
+<li><code>parameter</code>: Eingabewerte, die die Methode für ihre Arbeit benötigt. Eine Methode kann keine, einen oder mehrere Parameter haben.</li>
+<li><code>return</code>: Das Schlüsselwort, um einen Wert aus der Methode zurückzugeben.</li>
+</ul>
+<p><strong>1. Methode ohne Parameter und ohne Rückgabewert</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Definition der Methode</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">begruessung</span><span class="hljs-params">()</span> </span>{
+    System.out.println(<span class="hljs-string">"Hallo aus der Methode!"</span>);
+}
+
+<span class="hljs-comment">// Aufruf der Methode</span>
+begruessung();
+</div></code></pre>
+<p><strong>2. Methode mit Parametern und ohne Rückgabewert</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Definition</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">zeigeSumme</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{
+    System.out.println(<span class="hljs-string">"Die Summe ist: "</span> + (a + b));
+}
+
+<span class="hljs-comment">// Aufruf</span>
+zeigeSumme(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// Ausgabe: Die Summe ist: 8</span>
+</div></code></pre>
+<p><strong>3. Methode mit Parametern und mit Rückgabewert</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Definition</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">multipliziere</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{
+    <span class="hljs-keyword">int</span> ergebnis = a * b;
+    <span class="hljs-keyword">return</span> ergebnis;
+}
+
+<span class="hljs-comment">// Aufruf und Speichern des Rückgabewerts in einer Variable</span>
+<span class="hljs-keyword">int</span> produkt = multipliziere(<span class="hljs-number">7</span>, <span class="hljs-number">4</span>);
+System.out.println(produkt); <span class="hljs-comment">// Ausgabe: 28</span>
+</div></code></pre>
+<h3 id="41-rekursion">4.1 Rekursion</h3>
+<p>Rekursion ist eine Technik, bei der eine Methode sich selbst aufruft, um ein Problem zu lösen. Anstatt eine Schleife zu verwenden, wird das Problem in kleinere, gleichartige Teilprobleme zerlegt, bis ein einfacher, direkt lösbarer Fall erreicht ist.</p>
+<p><strong>Wichtige Bestandteile einer rekursiven Methode</strong>:</p>
+<ol>
+<li><strong>Rekursiver Aufruf</strong>: Der Aufruf der Methode in sich selbst, typischerweise mit einem veränderten (meist kleineren) Parameter.</li>
+<li><strong>Abbruchbedingung (Base Case)</strong>: Eine <code>if</code>-Bedingung, die den direkt lösbaren Fall prüft und die Rekursion beendet. Ohne eine Abbruchbedingung würde die Methode sich unendlich oft selbst aufrufen, was zu einem <code>StackOverflowError</code> führt.</li>
+</ol>
+<p><strong>Beispiel: Berechnung der Fakultät</strong></p>
+<p>Die Fakultät einer Zahl <code>n</code> (geschrieben als <code>n!</code>) ist das Produkt aller ganzen Zahlen von 1 bis <code>n</code>.</p>
+<ul>
+<li>Mathematische Definition: <code>n! = n * (n-1) * (n-2) * ... * 1</code></li>
+<li>Rekursive Definition: <code>n! = n * (n-1)!</code></li>
+<li>Abbruchbedingung: <code>0! = 1</code></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RekursionBeispiel</span> </span>{
+
+    <span class="hljs-comment">// Rekursive Methode zur Berechnung der Fakultät</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fakultaet</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+        <span class="hljs-comment">// 1. Abbruchbedingung (Base Case)</span>
+        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        }
+        <span class="hljs-comment">// 2. Rekursiver Aufruf</span>
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> n * fakultaet(n - <span class="hljs-number">1</span>);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> zahl = <span class="hljs-number">5</span>;
+        <span class="hljs-keyword">int</span> ergebnis = fakultaet(zahl);
+        <span class="hljs-comment">// Aufrufkette:</span>
+        <span class="hljs-comment">// fakultaet(5) -&gt; 5 * fakultaet(4)</span>
+        <span class="hljs-comment">// fakultaet(4) -&gt; 4 * fakultaet(3)</span>
+        <span class="hljs-comment">// fakultaet(3) -&gt; 3 * fakultaet(2)</span>
+        <span class="hljs-comment">// fakultaet(2) -&gt; 2 * fakultaet(1)</span>
+        <span class="hljs-comment">// fakultaet(1) -&gt; 1 * fakultaet(0)</span>
+        <span class="hljs-comment">// fakultaet(0) -&gt; gibt 1 zurück</span>
+
+        System.out.println(<span class="hljs-string">"Die Fakultät von "</span> + zahl + <span class="hljs-string">" ist "</span> + ergebnis); <span class="hljs-comment">// Ausgabe: Die Fakultät von 5 ist 120</span>
+    }
+}
+</div></code></pre>
+<h2 id="5-objekt-orientierte-programmierung">5. Objekt Orientierte Programmierung</h2>
+<p>Die <strong>Objektorientierte Programmierung (OOP)</strong> ist ein Programmierparadigma, das auf dem Konzept von &quot;Objekten&quot; basiert. Diese Objekte sind Instanzen von &quot;Klassen&quot; und kombinieren Daten (Attribute) mit den Funktionen (Methoden), die auf diesen Daten operieren. Ziel der OOP ist es, die Entwicklung großer und komplexer Software zu vereinfachen, indem Probleme in kleinere, besser handhabbare Einheiten zerlegt werden.</p>
+<h3 id="51-beispiel">5.1 Beispiel</h3>
+<p>Datei <code>Person.java</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Bauplan für Personen (Objekte vom Typ Person)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-keyword">public</span> String name;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> age;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">birthday</span><span class="hljs-params">()</span> </span>{
+        age++;
+    }
+}
+</div></code></pre>
+<p>Datei <code>Test.java</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Programm um Personen zu erzeugen, Eigenschaften zuzuweisen und</span>
+<span class="hljs-comment">// auszugeben</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">// Objekte sind Variablen und müssen definiert werden</span>
+        Person p1; <span class="hljs-comment">// Variable p1 vom Typ Person</span>
+        p1 = <span class="hljs-keyword">new</span> Person(); <span class="hljs-comment">// Objekterzeugung mit dem Schlüsselwort new</span>
+        p1.name = <span class="hljs-string">"Michael"</span>; <span class="hljs-comment">// Zugriff auf Eigenschaften mit dem</span>
+        
+        <span class="hljs-comment">// Punktoperator</span>
+        p1.age = <span class="hljs-number">21</span>;
+        p1.birthday();
+        Person p2 = <span class="hljs-keyword">new</span> Person();
+        p2.name = <span class="hljs-string">"Eva"</span>;
+        p2.age = <span class="hljs-number">19</span>;
+        p2.birthday();
+        
+        <span class="hljs-comment">// Ausgabe der Eigenschaftswerte der beiden Objekte</span>
+        System.out.println(<span class="hljs-string">"Name: "</span> + p1.name + <span class="hljs-string">" Alter: "</span> + p1.age);
+        System.out.println(<span class="hljs-string">"Name: "</span> + p2.name + <span class="hljs-string">" Alter: "</span> + p2.age);
+    }
+}
+</div></code></pre>
+<h3 id="52-objekte-erzeugen-und-verwenden">5.2 Objekte erzeugen und verwenden</h3>
+<h4 id="521-objekt-erzeugen">5.2.1 Objekt erzeugen</h4>
+<p>Die erzeugung des Objekts besteht typischerweise aus zwei Schritten:</p>
+<ol>
+<li>Variablendefinition: <code>Person p1;</code></li>
+<li>Objekterzeugung: <code>p1 = new Person();</code></li>
+</ol>
+<h3 id="522-objekte-verwenden">5.2.2 Objekte verwenden</h3>
+<p>Zugriff auf Eigenschaften eines Objekts geschiet mittels <strong>Punktoperator</strong></p>
+<ul>
+<li>Zuweisung: <code>p1.name = &quot;Michael&quot;;</code></li>
+<li>Zugriff: <code>String output = p1.name;</code></li>
+</ul>
+<h2 id="53-set--und-get-methoden">5.3 Set- und Get-Methoden</h2>
+<p>Eine</p>
+<h2 id="54-konstruktoren">5.4 Konstruktoren</h2>
+<p><a href="/" class="button-clean">Back to Dashboard</a></p>
 
 </body>
 </html>

@@ -59,4 +59,4 @@ Die dritte Normalform baut auf der 2NF auf, stellt aber zusätzlich sicher, dass
 ![3NF](./img/3NF.png)
 
 
-<a href="/" class="button-clean">Go to Home</a>
+<a href="/" class="button-clean">Back to Dashboard</a>

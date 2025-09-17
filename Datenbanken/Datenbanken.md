@@ -128,4 +128,4 @@ TODO:
 - **Edge Computing**: Dezentrale Datenhaltung
 - **Vector Databases**: Für KI/ML-Anwendungen
 
-<a href="/" class="button-clean">Go to Home</a>
+<a href="/" class="button-clean">Back to Dashboard</a>
